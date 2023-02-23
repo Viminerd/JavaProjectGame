@@ -1,7 +1,8 @@
 
-public class Project_Main {
 
-	public Project_Main() {
+public class ProjectMain {
+
+	public ProjectMain() {
 		// TODO Auto-generated constructor stub
 	}
 
