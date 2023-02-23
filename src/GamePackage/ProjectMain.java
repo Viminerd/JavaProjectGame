@@ -1,3 +1,7 @@
+/**
+ * The game is created and initialised
+ */
+
 package GamePackage;
 public class ProjectMain{
 
