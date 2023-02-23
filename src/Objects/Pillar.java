@@ -3,8 +3,9 @@
  */
 package Objects;
 
-import java.awt.Color;
 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.scene.shape.Sphere;
 
@@ -20,13 +21,13 @@ public class Pillar extends Entity {
 	 */
 	public Pillar(double x, double y, double radie) {
 		gc.setFill(Color.WHITE);
-		gc.setStroke(Color.Black);
+		gc.setStroke(Color.BLACK);
 		gc.fillOval(x - radie/2, y - radie/2, radie, radie);
 		
-		shape = new Circle();
-		shape.setCenterX(x-radie); 
-		shape.setCenterY(y-radie); 
-		shape.setRadius(radie); 
+		hitBox = new Circle();
+		hitBox.setCenterX(x-radie); 
+		hitBox.setCenterY(y-radie); 
+	    hitBox.setRadius(radie); 
 	}
 
 }
