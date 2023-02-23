@@ -5,6 +5,8 @@ package Scene;
 
 import java.util.ArrayList;
 
+import Objects.Entity;
+
 /**
  * Superclass for our scenes of varying difficulty
  * @author Viktor
@@ -19,6 +21,4 @@ public class GameScene {
 	public GameScene() {
 		// TODO Auto-generated constructor stub
 	}
-	
-
 }
