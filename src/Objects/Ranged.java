@@ -4,7 +4,7 @@
 package Objects;
 
 /**
- * @author Viktor
+ * 
  *
  */
 public class Ranged extends Enemy {
@@ -30,15 +30,10 @@ public class Ranged extends Enemy {
 		// TODO Auto-generated method stub
 		
 	}
-<<<<<<< HEAD
-	
-=======
-
 	@Override
 	protected void setShape() {
 		// TODO Auto-generated method stub
 		
 	}
->>>>>>> 96bb67bffc44c093e4f4e117853df7d8b6c67276
 
 }
