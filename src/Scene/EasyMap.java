@@ -20,11 +20,12 @@ public class EasyMap extends GameScene {
 		sizeX = 1200; 
 		sizeY = 600; 
 		
-		double x = 0; 
-		double y = 0; 
+		double x = 200; 
+		double y = 30; 
 		double r = 20;
-		objectList.add(new Pillar(x, y, r)); 
-		// TODO Auto-generated constructor stub
+		//new Pillar(x,y,r,gc); 
+		//objectList.add(new Pillar(x, y, r, gc)); 
+		gc.fillOval(10,10,30,50);
 	}
 
 }
