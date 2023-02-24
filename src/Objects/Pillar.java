@@ -20,11 +20,11 @@ public class Pillar extends Entity {
 	/**
 	 * 
 	 */
-	public Pillar(double x, double y, double radie, GraphicsContext g) {
+	public Pillar(double x, double y, double radie) {
 		super(x,y);
-		g.setFill(Color.WHITE);
-		g.setStroke(Color.BLACK);
-		g.fillOval(x - radie/2, y - radie/2, radie, radie);
+		gc.setFill(Color.BROWN);
+		gc.setStroke(Color.BLACK);
+		gc.fillOval(x - radie/2, y - radie/2, radie, radie);
 		
 		hitBox = new Circle();
 //		hitBox.setCenterX(x-radie); 
