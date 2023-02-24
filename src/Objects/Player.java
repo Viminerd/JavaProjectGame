@@ -13,6 +13,11 @@ public class Player extends Character {
 		gc.setLineWidth(2);
 		gc.fillOval(posx, posy, 30, 30);
 		gc.strokeOval(posx, posy, 30, 30);
+		
+		setOnMouseClicked(event -> {
+			System.out.println("MOUSE CLIKC");
+
+		});
 		setOnKeyPressed(e -> {
 			System.out.println("CLICK BUTTON");
 			switch(e.getCode()) {
@@ -41,6 +46,9 @@ public class Player extends Character {
 			
 			
 		});
+        setFocusTraversable(true);
+        requestFocus();
+		
 		
 		
 		
