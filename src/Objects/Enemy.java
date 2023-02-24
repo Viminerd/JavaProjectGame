@@ -21,6 +21,6 @@ public abstract class Enemy extends Character {
 	}
 	
 	public abstract void doAction(); 
-	public abstract move(); 
+	public abstract void move(); 
 
 }
