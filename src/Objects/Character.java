@@ -11,6 +11,7 @@ public class Character extends Entity {
 	public Character(double posx, double posy, int health) {
 		super(posx, posy);
 		this.setHealth(health);
+		
 	}
 
 	public int getHealth() {
