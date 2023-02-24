@@ -1,10 +1,17 @@
 package Objects;
 
+import GamePackage.ProjectMain;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
-public class Player extends Character {
-	private double newx; 
-	private double newy; 
+public class Player extends Character{ 
+	private double moveSpeed;
+	private double newY;
+	private double newX;
+	private Timeline timeline; 
 	public Player(double posx, double posy, int health) {
 		super(posx, posy, health);
 		System.out.println("CREATED PLAYER");
@@ -13,57 +20,80 @@ public class Player extends Character {
 		gc.setLineWidth(2);
 		gc.fillOval(posx, posy, 30, 30);
 		gc.strokeOval(posx, posy, 30, 30);
+		moveSpeed = 5; 
 		
-		setOnMouseClicked(event -> {
-			System.out.println("MOUSE CLIKC");
-
-		});
-		setOnKeyPressed(e -> {
-			System.out.println("CLICK BUTTON");
+		
+//		newX = 0; 
+//		newY = 0; 
+		
+		timeline = new Timeline(new KeyFrame(Duration.millis(16), event -> {
+			move(newX,newY); 
+			
+		}));
+		
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
+		
+		ProjectMain.mainScene.setOnKeyPressed(e -> {
 			switch(e.getCode()) {
 			case W: 
-				newy = posy + 10; 
+				newY = -1*moveSpeed;  
 				break;
 			case S: 
-				newy = posy-10; 
+				newY = 1*moveSpeed; 
 				break;
-			case A: 
-				newx = posx-10; 
+			case A:
+				newX = -1*moveSpeed; 
 				break;
 			case D: 
-				newx = posx+10; 
+				newX = 1*moveSpeed;
+				break;
+			default:
 				break;
 			}
-			//move(newx, newy); 
-			gc.setFill(Color.LIGHTGREEN);
-			gc.clearRect(posx, posy, 30, 30);
+			//move(newX, newY); 		
 			
-			//Paint new image
-			gc.setFill(Color.RED);
-			gc.setStroke(Color.GREEN);
-			gc.setLineWidth(2);
-			gc.fillOval(newx, newy, 30, 30);
+		});	
+		
+		ProjectMain.mainScene.setOnKeyReleased(e -> {
+			switch(e.getCode()) {
+			case W:
+				newY += 1*moveSpeed;
+				break;
+			case S: 
+				newY -= 1*moveSpeed;
+				break; 
+			case A:
+				newX += 1*moveSpeed;
+				break; 
+			case D: 
+				newX -= 1*moveSpeed;
+				break; 
+			default:
+				break;
+			}
 			
 			
-		});
-        setFocusTraversable(true);
-        requestFocus();
-		
-		
-		
-		
+		});	
 		
 	}
-	public void move(double newY, double newX) {
+
+	public void move(double newX, double newY) {
 		//Clear old image
 		gc.setFill(Color.LIGHTGREEN);
-		gc.clearRect(posx, posy, 30, 30);
-		
+		gc.setStroke(Color.LIGHTGREEN);
+		gc.setLineWidth(gc.getLineWidth()+2);
+		gc.fillOval(getPosx(), getPosy(), 30, 30);
+		gc.strokeOval(getPosx(), getPosy(), 30, 30);
+		 
 		//Paint new image
 		gc.setFill(Color.RED);
 		gc.setStroke(Color.GREEN);
 		gc.setLineWidth(2);
-		gc.fillOval(newX, newX, 30, 30);
+		gc.fillOval(getPosx()+newX, getPosy()+newY, 30, 30);
+		gc.strokeOval(getPosx()+newX, getPosy()+newY, 30, 30);
+		posx = getPosx()+newX;
+		posy = getPosy()+newY; 
 		
 	}
 

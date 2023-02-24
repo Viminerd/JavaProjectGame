@@ -1,21 +1,25 @@
 package GamePackage;
 
 public class GameProgram {
+	private String difficulty; 
 	public GameProgram(String difficulty) {
-<<<<<<< HEAD
-		Scene.EasyMap map = new Scene.EasyMap(ProjectMain.gameCanvas);
+		this.difficulty = difficulty; 
+		//Scene.EasyMap map = new Scene.EasyMap();
+		Map();
+
 	}
 	
-	public void EasyMap() {
+	public void Map() {
 		
-=======
+
 		if (difficulty.equals("easy")) {
 			easyMap();
 		}
 		else if (difficulty.equals("hard")) {
 			hardMap();
 		}
->>>>>>> a10f97638e3d321e52655129d5fb74b99762d595
+		
+
 	}
 
 	public void easyMap() {

@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 public class ProjectMain extends Application {
 	public static Canvas gameCanvas = new Canvas(1200, 600);
+	public static Scene mainScene; 
 	private GraphicsContext gc = gameCanvas.getGraphicsContext2D();
 
 	public static void main(String[] args) {
@@ -23,14 +24,17 @@ public class ProjectMain extends Application {
 	}
 
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Oscar och Viktors Canvas!");
+		primaryStage.setTitle("Projekt TDDE10");
 
 		BorderPane mainlayout = new BorderPane();
 		gc.setFill(Color.LIGHTGREEN);
 		gc.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+//		gameCanvas.setOnMouseClicked(event -> {
+//			System.out.println("MOUSE CLIKC");
+//		});
 
 		mainlayout.setCenter(gameCanvas);
-		Scene mainScene = new Scene(mainlayout);
+		mainScene = new Scene(mainlayout);
 		primaryStage.setScene(mainScene);
 		primaryStage.show();
 

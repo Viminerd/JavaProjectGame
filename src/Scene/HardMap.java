@@ -24,11 +24,10 @@ public class HardMap extends GameScene{
 			objectList.add(new Pillar(x+400*i, y, r)); 
 			objectList.add(new Pillar(x+400*i, y+300, r)); 
 		}
-		for (int i = 0; i<8; i++) {
-			objectList.add(new Pillar(x+400, y+37.5*i, r));			
-		}
-		objectList.add(new LavaPool(x+400,300,r*2)); 
-		// TODO Auto-generated constructor stub
+
+		objectList.add(new LavaPool(x+400,170,r*2)); 
+
 	}
+	
 
 }
