@@ -63,5 +63,11 @@ public class Player extends Character {
 		
 		
 	}
+
+	@Override
+	protected void setShape() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

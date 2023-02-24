@@ -13,11 +13,13 @@ import javafx.scene.shape.Shape;
  * @author osclo923
  *
  */
-public class Entity extends Canvas {
+public abstract class Entity extends Canvas {
 	protected GraphicsContext gc = ProjectMain.gameCanvas.getGraphicsContext2D();
 	protected Shape hitBox;
 	protected double posx;
 	protected double posy;
+	
+	protected abstract void setShape();
 
 	public Entity(double posx, double posy) {
 		this.posx = posx;

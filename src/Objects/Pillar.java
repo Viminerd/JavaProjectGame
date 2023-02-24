@@ -36,4 +36,10 @@ public class Pillar extends Entity {
 //	    hitBox.setRadius(radie); 
 	}
 
+	@Override
+	protected void setShape() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -26,4 +26,10 @@ public class LavaPool extends Entity {
 		gc.strokeOval(posx - radie/2, posy - radie/2, radie, radie*3);
 	}
 
+	@Override
+	protected void setShape() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
