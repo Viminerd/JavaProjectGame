@@ -4,6 +4,7 @@
 
 package Objects;
 
+import GamePackage.ProjectMain;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.Shape;
@@ -13,7 +14,7 @@ import javafx.scene.shape.Shape;
  *
  */
 public class Entity extends Canvas {
-	protected GraphicsContext gc = getGraphicsContext2D();
+	protected GraphicsContext gc = ProjectMain.gameCanvas.getGraphicsContext2D();
 	protected Shape hitBox;
 	private double posx;
 	private double posy;

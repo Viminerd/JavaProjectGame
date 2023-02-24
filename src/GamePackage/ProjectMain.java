@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class ProjectMain extends Application{
-	private Canvas gameCanvas = new Canvas(1200,600); 
+	public static Canvas gameCanvas = new Canvas(1200,600); 
 	private GraphicsContext g = gameCanvas.getGraphicsContext2D();
 	public static void main(String[] args) {
 		launch(args);
@@ -35,7 +35,7 @@ public class ProjectMain extends Application{
 	}
 	
 	public void easyMap() {
-		new EasyMap(g);
+		new EasyMap(gameCanvas);
 	}
 	
 
