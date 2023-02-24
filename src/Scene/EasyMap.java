@@ -15,7 +15,7 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public class EasyMap extends GameScene {
 
-	public EasyMap(Canvas canvas) {
+	public EasyMap() {
 		sizeX = 1200; 
 		sizeY = 600; 
 		
