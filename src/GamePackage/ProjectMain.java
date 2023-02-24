@@ -14,9 +14,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class ProjectMain extends Application{
-	public static Canvas gameCanvas = new Canvas(1200,600); 
+public class ProjectMain extends Application {
+	public static Canvas gameCanvas = new Canvas(1200, 600);
 	private GraphicsContext g = gameCanvas.getGraphicsContext2D();
+
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -28,7 +29,7 @@ public class ProjectMain extends Application{
 
 		BorderPane mainlayout = new BorderPane();
 		g.setFill(Color.LIGHTGREEN);
-		g.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight()); 
+		g.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
 
 		mainlayout.setCenter(gameCanvas);
 		Scene mainScene = new Scene(mainlayout);
@@ -36,21 +37,16 @@ public class ProjectMain extends Application{
 		primaryStage.show();
 		easyMap();
 	}
-	
-	public void run() {
-		
-		
-		
-		
-		
+
+	public void runGame() { //runs when start in main meny has been pressed
+		new GameProgram();
+		new Player(10, 10, 10);
 	}
-	
-	
+
 	public void easyMap() {
 		new EasyMap(gameCanvas);
-		new Player(10,10,10);
 		
+
 	}
-	
 
 }
