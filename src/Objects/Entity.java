@@ -16,8 +16,8 @@ import javafx.scene.shape.Shape;
 public class Entity extends Canvas {
 	protected GraphicsContext gc = ProjectMain.gameCanvas.getGraphicsContext2D();
 	protected Shape hitBox;
-	private double posx;
-	private double posy;
+	protected double posx;
+	protected double posy;
 
 	public Entity(double posx, double posy) {
 		this.posx = posx;
