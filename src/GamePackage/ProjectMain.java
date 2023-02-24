@@ -24,8 +24,6 @@ public class ProjectMain extends Application {
 
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Oscar och Viktors Canvas!");
-//		primaryStage.setWidth(1200);
-//		primaryStage.setHeight(600); 
 
 		BorderPane mainlayout = new BorderPane();
 		g.setFill(Color.LIGHTGREEN);
