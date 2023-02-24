@@ -14,9 +14,6 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public class EasyMap extends GameScene {
 
-	/**
-	 * 
-	 */
 	public EasyMap(Canvas canvas) {
 		sizeX = 1200; 
 		sizeY = 600; 
@@ -27,6 +24,10 @@ public class EasyMap extends GameScene {
 		for (int i = 0; i<3;i++) {
 			objectList.add(new Pillar(x+400*i, y, r)); 
 			objectList.add(new Pillar(x+400*i, y+300, r)); 
+		}
+		for (int i = 0; i<8; i++) {
+			objectList.add(new Pillar(x+400, y+37.5*i, r));
+			
 		}
 		
 	
