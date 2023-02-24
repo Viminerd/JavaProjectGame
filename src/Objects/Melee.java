@@ -4,7 +4,7 @@
 package Objects;
 
 /**
- * @author Viktor
+ * 
  *
  */
 public class Melee extends Enemy {
@@ -16,7 +16,7 @@ public class Melee extends Enemy {
 	 * @param p
 	 */
 	public Melee(double posx, double posy, int health, Player p) {
-		super(posx, posy, health, p);
+		super(posx, posy, 200, p);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -24,6 +24,12 @@ public class Melee extends Enemy {
 	public void doAction() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
