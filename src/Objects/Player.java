@@ -37,16 +37,16 @@ public class Player extends Character{
 		ProjectMain.mainScene.setOnKeyPressed(e -> {
 			switch(e.getCode()) {
 			case W: 
-				newY = -1*moveSpeed;  
+				newY = -1;  
 				break;
 			case S: 
-				newY = 1*moveSpeed; 
+				newY = 1; 
 				break;
 			case A:
-				newX = -1*moveSpeed; 
+				newX = -1; 
 				break;
 			case D: 
-				newX = 1*moveSpeed;
+				newX = 1;
 				break;
 			default:
 				break;
@@ -58,16 +58,16 @@ public class Player extends Character{
 		ProjectMain.mainScene.setOnKeyReleased(e -> {
 			switch(e.getCode()) {
 			case W:
-				newY += 1*moveSpeed;
+				newY += 1;
 				break;
 			case S: 
-				newY -= 1*moveSpeed;
+				newY -= 1;
 				break; 
 			case A:
-				newX += 1*moveSpeed;
+				newX += 1;
 				break; 
 			case D: 
-				newX -= 1*moveSpeed;
+				newX -= 1;
 				break; 
 			default:
 				break;
@@ -90,10 +90,10 @@ public class Player extends Character{
 		gc.setFill(Color.RED);
 		gc.setStroke(Color.GREEN);
 		gc.setLineWidth(2);
-		gc.fillOval(getPosx()+newX, getPosy()+newY, 30, 30);
-		gc.strokeOval(getPosx()+newX, getPosy()+newY, 30, 30);
-		posx = getPosx()+newX;
-		posy = getPosy()+newY; 
+		gc.fillOval(getPosx()+newX*moveSpeed, getPosy()+newY*moveSpeed, 30, 30);
+		gc.strokeOval(getPosx()+newX*moveSpeed, getPosy()+newY*moveSpeed, 30, 30);
+		posx = getPosx()+newX*moveSpeed;
+		posy = getPosy()+newY*moveSpeed; 
 		
 	}
 
