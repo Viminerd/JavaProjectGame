@@ -5,7 +5,7 @@ package Objects;
  * @author osclo923
  * set position and health for characters
  */
-public class Character extends Entity {
+public abstract class Character extends Entity {
 	private int health;
 
 	public Character(double posx, double posy, int health) {
@@ -21,5 +21,10 @@ public class Character extends Entity {
 	public void setHealth(int health) {
 		this.health = health;
 	}
+
+
+	protected abstract void setShape();
+
+
 
 }

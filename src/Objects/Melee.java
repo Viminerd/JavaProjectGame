@@ -26,4 +26,16 @@ public class Melee extends Enemy {
 
 	}
 
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void setShape() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

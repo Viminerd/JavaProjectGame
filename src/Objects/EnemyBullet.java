@@ -20,6 +20,12 @@ public class EnemyBullet extends Bullet{
 		
 	}
 
+	@Override
+	protected void setShape() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

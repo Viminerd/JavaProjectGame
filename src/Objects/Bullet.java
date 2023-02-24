@@ -18,5 +18,8 @@ public abstract class Bullet extends Entity{
 	}
 	
 	public abstract void onCollision(Entity entity);
-	
+
+
+	protected abstract void setShape();
+
 }

@@ -20,4 +20,10 @@ public class FriendlyBullet extends Bullet{
 		
 	}
 
+	@Override
+	protected void setShape() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
