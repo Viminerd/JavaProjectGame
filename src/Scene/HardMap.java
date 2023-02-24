@@ -5,20 +5,18 @@ package Scene;
 
 import Objects.LavaPool;
 import Objects.Pillar;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 
 /**
- * Map without lavapools and lots of protection against bullets and restrictions for bot movement
- * 
  *
  */
-public class EasyMap extends GameScene {
+public class HardMap extends GameScene{
 
-	public EasyMap(Canvas canvas) {
+	/**
+	 * 
+	 */
+	public HardMap() {
 		sizeX = 1200; 
 		sizeY = 600; 
-		
 		double x = 200; 
 		double y = 100; 
 		double r = 40;
@@ -29,9 +27,8 @@ public class EasyMap extends GameScene {
 		for (int i = 0; i<8; i++) {
 			objectList.add(new Pillar(x+400, y+37.5*i, r));			
 		}
-		
-		
-	
+		objectList.add(new LavaPool(x+400,300,r*2)); 
+		// TODO Auto-generated constructor stub
 	}
 
 }
