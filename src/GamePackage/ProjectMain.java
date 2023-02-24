@@ -26,6 +26,8 @@ public class ProjectMain extends Application{
 //		primaryStage.setHeight(600); 
 
 		BorderPane mainlayout = new BorderPane();
+		g.setFill(Color.LIGHTGREEN);
+		g.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight()); 
 
 		mainlayout.setCenter(gameCanvas);
 		Scene mainScene = new Scene(mainlayout);
