@@ -29,6 +29,8 @@ public class Pillar extends Entity {
 		gc.strokeOval(x - radie/2, y - radie/2, radie, radie);
 		
 		hitBox = new Circle();
+		hitBox.setStrokeWidth(radie); 
+		hitBox.setFill(Color.RED);
 //		hitBox.setCenterX(x-radie); 
 //		hitBox.setCenterY(y-radie); 
 //	    hitBox.setRadius(radie); 
