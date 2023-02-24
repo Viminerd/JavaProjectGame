@@ -4,6 +4,7 @@
 
 package GamePackage;
 
+import Objects.Player;
 import Scene.EasyMap;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -34,8 +35,19 @@ public class ProjectMain extends Application{
 		easyMap();
 	}
 	
+	public void run() {
+		
+		
+		
+		
+		
+	}
+	
+	
 	public void easyMap() {
 		new EasyMap(gameCanvas);
+		new Player(10,10,10);
+		
 	}
 	
 
