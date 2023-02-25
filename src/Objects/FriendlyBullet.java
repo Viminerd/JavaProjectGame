@@ -26,4 +26,10 @@ public class FriendlyBullet extends Bullet{
 		
 	}
 
+	@Override
+	public void paintMe() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

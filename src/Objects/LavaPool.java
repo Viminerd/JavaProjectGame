@@ -32,4 +32,10 @@ public class LavaPool extends Entity {
 		
 	}
 
+	@Override
+	public void paintMe() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

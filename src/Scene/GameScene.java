@@ -16,7 +16,7 @@ public class GameScene {
 
 	protected double sizeX; 
 	protected double sizeY; 	
-	protected ArrayList<Entity> objectList = new ArrayList<>(); 
+	public static ArrayList<Entity> objectList = new ArrayList<>(); 
 	
 	public GameScene() {
 		// TODO Auto-generated constructor stub

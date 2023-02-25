@@ -24,4 +24,10 @@ public class Powerup extends Entity {
 
 	}
 
+	@Override
+	public void paintMe() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -26,6 +26,12 @@ public class EnemyBullet extends Bullet{
 		
 	}
 
+	@Override
+	public void paintMe() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

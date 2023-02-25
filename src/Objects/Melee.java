@@ -37,4 +37,10 @@ public class Melee extends Enemy {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void paintMe() {
+		// TODO Auto-generated method stub
+		
+	}
 }

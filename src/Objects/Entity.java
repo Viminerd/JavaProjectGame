@@ -51,5 +51,8 @@ public abstract class Entity extends Canvas {
 	public void removeEntity() {
 		gc = getGraphicsContext2D(); // creates empty gc
 	}
+	
+	public abstract void paintMe();
+	
 
 }
