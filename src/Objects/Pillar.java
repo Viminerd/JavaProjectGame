@@ -27,11 +27,6 @@ public class Pillar extends Entity {
 	public Pillar(double x, double y, double radie) {
 		super(x,y);
 		this.radie = radie; 
-//		gc.setFill(Color.WHITE);
-//		gc.setStroke(Color.BLACK);
-//		gc.setLineWidth(2);
-//		gc.fillOval(x - radie/2, y - radie/2, radie, radie);
-//		gc.strokeOval(x - radie/2, y - radie/2, radie, radie);
 		
 		hitBox = new Circle(x,y,radie);
 		hitBox.setFill(Color.WHITE);
