@@ -17,7 +17,7 @@ import javafx.scene.shape.Shape;
  */
 public abstract class Entity extends Canvas {
 	
-	public static ArrayList<Shape> EntityList = new ArrayList<>(); 
+	public static ArrayList<Shape> EntityList = new ArrayList<>();  
 	protected Canvas objectCanvas = new Canvas(1000,1000); 
 	protected GraphicsContext gc = ProjectMain.gameCanvas.getGraphicsContext2D();
 	
