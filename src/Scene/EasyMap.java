@@ -23,11 +23,11 @@ public class EasyMap extends GameScene {
 		double y = 100; 
 		double r = 40;
 		for (int i = 0; i<3;i++) {
-			objectList.add(new Pillar(x+400*i, y, r)); 
-			objectList.add(new Pillar(x+400*i, y+300, r)); 
+			objectList.add(new Pillar(x+200*i, y, r)); 
+			objectList.add(new Pillar(x+200*i, y+300, r)); 
 		}
 		for (int i = 0; i<8; i++) {
-			objectList.add(new Pillar(x+400, y+37.5*i, r));			
+			objectList.add(new Pillar(x+200, y+37.5*i, r));			
 		}
 		
 		

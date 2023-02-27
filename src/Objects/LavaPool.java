@@ -3,10 +3,12 @@
  */
 package Objects;
 
+import GamePackage.GameProgram;
 import GamePackage.ProjectMain;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Sphere;
 
 /**
@@ -23,14 +25,13 @@ public class LavaPool extends Entity {
 	public LavaPool(double posx, double posy, double radie) {
 		super(posx, posy);
 		this.radie = radie; 
-		// TODO Auto-generated constructor stub
-		paintMe(); 
-		entityList.add(this); 
+		
+		GameProgram.entityList.add(this); 
 		
 		
-		hitBox = new Ellipse(posx, posy, radie, radie*3);
-		hitBox.setFill(null);
-		hitBox.setStroke(Color.GREEN);
+		hitBox = new Rectangle(posx, posy, posx+50, posy+50);
+		hitBox.setFill(Color.ORANGE);
+		hitBox.setStroke(Color.RED);
 		EntityList.add(hitBox); 
 		ProjectMain.mainlayout.getChildren().add(hitBox);
 	}
@@ -43,11 +44,13 @@ public class LavaPool extends Entity {
 
 	@Override
 	public void paintMe() {
-		gc.setFill(Color.ORANGE);
-		gc.setStroke(Color.RED);
-		gc.setLineWidth(2);
-		gc.fillOval(posx - radie/2, posy - radie/2, radie, radie*3);
-		gc.strokeOval(posx - radie/2, posy - radie/2, radie, radie*3);
+		hitBox.setLayoutX(posx);
+		hitBox.setLayoutY(posy);
+//		gc.setFill(Color.ORANGE);
+//		gc.setStroke(Color.RED);
+//		gc.setLineWidth(2);
+//		gc.fillOval(posx - radie/2, posy - radie/2, radie, radie*3);
+//		gc.strokeOval(posx - radie/2, posy - radie/2, radie, radie*3);
 		
 		
 	}

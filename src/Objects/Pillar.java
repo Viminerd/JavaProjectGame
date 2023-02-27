@@ -5,6 +5,7 @@ package Objects;
 
 
 
+import GamePackage.GameProgram;
 import GamePackage.ProjectMain;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -22,24 +23,23 @@ public class Pillar extends Entity {
 	/**
 	 * 
 	 */
+	private double radie; 
 	public Pillar(double x, double y, double radie) {
 		super(x,y);
-		gc.setFill(Color.WHITE);
-		gc.setStroke(Color.BLACK);
-		gc.setLineWidth(2);
-		gc.fillOval(x - radie/2, y - radie/2, radie, radie);
-		gc.strokeOval(x - radie/2, y - radie/2, radie, radie);
+		this.radie = radie; 
+//		gc.setFill(Color.WHITE);
+//		gc.setStroke(Color.BLACK);
+//		gc.setLineWidth(2);
+//		gc.fillOval(x - radie/2, y - radie/2, radie, radie);
+//		gc.strokeOval(x - radie/2, y - radie/2, radie, radie);
 		
-		hitBox = new Circle(x,y,radie/2);
-		hitBox.setFill(null);
-		hitBox.setStroke(Color.BLUE); 
+		hitBox = new Circle(x,y,radie);
+		hitBox.setFill(Color.WHITE);
+		hitBox.setStroke(Color.BLACK); 
 		ProjectMain.mainlayout.getChildren().add(hitBox);
 		EntityList.add(hitBox);
-		entityList.add(this); 
-
-//		hitBox.setCenterX(x-radie); 
-//		hitBox.setCenterY(y-radie); 
-//	    hitBox.setRadius(radie); 
+		
+		GameProgram.entityList.add(this); 
 	}
 
 	@Override
@@ -50,7 +50,8 @@ public class Pillar extends Entity {
 
 	@Override
 	public void paintMe() {
-		// TODO Auto-generated method stub
+		hitBox.setLayoutX(posx);
+		hitBox.setLayoutY(posy);
 		
 	}
 

@@ -1,5 +1,6 @@
 package Objects;
 
+import GamePackage.GameProgram;
 import GamePackage.ProjectMain;
 import Scene.GameScene;
 import javafx.animation.KeyFrame;
@@ -25,7 +26,7 @@ public class Player extends Character{
 		hitBox.setStroke(Color.GREEN);
 		ProjectMain.mainlayout.getChildren().add(hitBox);
 		EntityList.add(hitBox);
-		EntityList.add(this);
+		GameProgram.entityList.add(this);
 		
 		
 		
