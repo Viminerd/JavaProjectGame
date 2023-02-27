@@ -5,8 +5,10 @@ package Objects;
 
 
 
+import GamePackage.ProjectMain;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.shape.Sphere;
 
@@ -28,9 +30,12 @@ public class Pillar extends Entity {
 		gc.fillOval(x - radie/2, y - radie/2, radie, radie);
 		gc.strokeOval(x - radie/2, y - radie/2, radie, radie);
 		
-		hitBox = new Circle();
-		hitBox.setStrokeWidth(radie); 
-		hitBox.setFill(Color.RED);
+		hitBox = new Circle(x,y,radie/2);
+		hitBox.setFill(null);
+		hitBox.setStroke(Color.BLUE); 
+		ProjectMain.mainlayout.getChildren().add(hitBox);
+		EntityList.add(hitBox);
+
 //		hitBox.setCenterX(x-radie); 
 //		hitBox.setCenterY(y-radie); 
 //	    hitBox.setRadius(radie); 

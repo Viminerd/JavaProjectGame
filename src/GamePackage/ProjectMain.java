@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 public class ProjectMain extends Application {
 	public static Canvas gameCanvas = new Canvas(1200, 600);
 	public static Scene mainScene; 
+	public static BorderPane mainlayout; 
 	private GraphicsContext gc = gameCanvas.getGraphicsContext2D();
 
 	public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class ProjectMain extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Projekt TDDE10");
 
-		BorderPane mainlayout = new BorderPane();
+		mainlayout = new BorderPane();
 		gc.setFill(Color.LIGHTGREEN);
 		gc.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
 //		gameCanvas.setOnMouseClicked(event -> {
