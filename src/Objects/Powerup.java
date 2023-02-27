@@ -25,7 +25,7 @@ public class Powerup extends Entity {
 	}
 
 	@Override
-	public void paintMe() {
+	public void moveMe() {
 		// TODO Auto-generated method stub
 		
 	}

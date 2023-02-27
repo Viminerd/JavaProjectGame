@@ -49,7 +49,7 @@ public class Pillar extends Entity {
 	}
 
 	@Override
-	public void paintMe() {
+	public void moveMe() {
 		hitBox.setLayoutX(posx);
 		hitBox.setLayoutY(posy);
 		

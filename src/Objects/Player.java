@@ -31,7 +31,7 @@ public class Player extends Character{
 		
 		
 		
-		paintMe();
+		moveMe();
 		
 		timeline = new Timeline(new KeyFrame(Duration.millis(16), event -> {
 			move(newX,newY); 
@@ -121,7 +121,7 @@ public class Player extends Character{
 				//Paint new image
 				posx = getPosx()+newX*moveSpeed;
 				posy = getPosy()+newY*moveSpeed; 
-				paintMe(); 
+				moveMe(); 
 				
 			}
 
@@ -142,7 +142,7 @@ public class Player extends Character{
 	}
 	
 	@Override
-	public void paintMe() {
+	public void moveMe() {
 //		gc.setFill(Color.RED);
 //		gc.setStroke(Color.GREEN);
 //		gc.setLineWidth(2);
