@@ -3,6 +3,9 @@
  */
 package Objects;
 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+
 /**
  * 
  *
@@ -17,7 +20,11 @@ public class Melee extends Enemy {
 	 */
 	public Melee(double posx, double posy, int health, Player p) {
 		super(posx, posy, 200, p);
-		// TODO Auto-generated constructor stub
+		hitBox = new Rectangle(posx,posy,Color.AQUA);
+		hitBox.setFill(Color.MAGENTA);
+		hitBox.setStroke(Color.BLACK);
+		EntityList.add(hitBox); 
+		
 	}
 
 	@Override
@@ -39,7 +46,7 @@ public class Melee extends Enemy {
 	}
 
 	@Override
-	public void paintMe() {
+	public void moveMe() {
 		// TODO Auto-generated method stub
 		
 	}
