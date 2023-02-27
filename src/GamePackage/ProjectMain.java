@@ -28,8 +28,9 @@ public class ProjectMain extends Application {
 		primaryStage.setTitle("Projekt TDDE10");
 
 		mainlayout = new BorderPane();
-		gc.setFill(Color.LIGHTGREEN);
-		gc.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+		CanvasPaintMe();
+//		gc.setFill(Color.LIGHTGREEN);
+//		gc.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
 //		gameCanvas.setOnMouseClicked(event -> {
 //			System.out.println("MOUSE CLIKC");
 //		});
@@ -41,6 +42,11 @@ public class ProjectMain extends Application {
 
 		runGame("hard"); // test
 
+	}
+	public static void CanvasPaintMe() {
+		gameCanvas.getGraphicsContext2D().setFill(Color.LIGHTGREEN);
+		gameCanvas.getGraphicsContext2D().fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+		
 	}
 
 	public void runGame(String difficulty) {

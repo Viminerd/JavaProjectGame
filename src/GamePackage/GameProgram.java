@@ -1,11 +1,27 @@
 package GamePackage;
 
+import Objects.Entity;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.shape.Shape;
+import javafx.util.Duration;
+
 public class GameProgram {
 	private String difficulty; 
+	private Timeline timeline;
 	public GameProgram(String difficulty) {
 		this.difficulty = difficulty; 
 		//Scene.EasyMap map = new Scene.EasyMap();
 		Map();
+		timeline = new Timeline(new KeyFrame(Duration.millis(16), event -> {
+			ProjectMain.CanvasPaintMe();
+			for (Entity entity : Entity.entityList) {
+				entity.paintMe(); 
+			}
+			
+		}));
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
 
 	}
 	

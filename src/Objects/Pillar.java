@@ -35,6 +35,7 @@ public class Pillar extends Entity {
 		hitBox.setStroke(Color.BLUE); 
 		ProjectMain.mainlayout.getChildren().add(hitBox);
 		EntityList.add(hitBox);
+		entityList.add(this); 
 
 //		hitBox.setCenterX(x-radie); 
 //		hitBox.setCenterY(y-radie); 
