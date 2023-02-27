@@ -37,7 +37,7 @@ public class Ranged extends Enemy {
 	}
 
 	@Override
-	public void paintMe() {
+	public void moveMe() {
 		// TODO Auto-generated method stub
 		
 	}

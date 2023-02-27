@@ -36,6 +36,18 @@ public class Player extends Character{
 //		timeline.setCycleCount(Timeline.INDEFINITE);
 //		timeline.play();
 		
+		
+		
+		moveMe();
+		
+		timeline = new Timeline(new KeyFrame(Duration.millis(16), event -> {
+			move(newX,newY); 
+			
+		}));
+		
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
+		
 		ProjectMain.mainScene.setOnKeyPressed(e -> {
 			switch(e.getCode()) {
 			case W: 
@@ -115,6 +127,8 @@ public class Player extends Character{
 				//Paint new image
 				posx = getPosx()+newX*moveSpeed;
 				posy = getPosy()+newY*moveSpeed; 
+				moveMe(); 
+
 				
 			}
 
@@ -135,7 +149,7 @@ public class Player extends Character{
 	}
 	
 	@Override
-	public void paintMe() {
+	public void moveMe() {
 //		gc.setFill(Color.RED);
 //		gc.setStroke(Color.GREEN);
 //		gc.setLineWidth(2);
