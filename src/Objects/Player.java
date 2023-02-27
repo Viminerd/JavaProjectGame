@@ -25,6 +25,7 @@ public class Player extends Character{
 		hitBox.setStroke(Color.GREEN);
 		ProjectMain.mainlayout.getChildren().add(hitBox);
 		EntityList.add(hitBox);
+		EntityList.add(this);
 		
 		
 		
@@ -92,7 +93,11 @@ public class Player extends Character{
 
 	public void move(double newX, double newY) {
 		boolean hitsAWall = false; 
+		double moveSpeed = 3;
 		if (newX != 0 || newY != 0) {
+			if(newX != 0 && newY !=0) { 
+				moveSpeed= Math.sqrt(moveSpeed*2);
+			}
 			hitBox.setLayoutX(getPosx()+newX*moveSpeed-10);
 			hitBox.setLayoutY(getPosy()+newY*moveSpeed-10);
 			for (Shape s : EntityList) {
