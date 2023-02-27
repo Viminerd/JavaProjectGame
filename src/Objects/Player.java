@@ -25,7 +25,7 @@ public class Player extends Character{
 		hitBox.setStroke(Color.GREEN);
 		ProjectMain.mainlayout.getChildren().add(hitBox);
 		EntityList.add(hitBox);
-		EntityList.add(this);
+		GameProgram.entityList.add(this);
 		
 		
 		
@@ -111,18 +111,17 @@ public class Player extends Character{
 			 
 			//Clear old image
 			if(hitsAWall == false) {
-				gc.setFill(Color.LIGHTGREEN);
-				gc.setStroke(Color.LIGHTGREEN);
-				gc.setLineWidth(gc.getLineWidth()+0.5);
-				gc.fillOval(getPosx(), getPosy(), 30, 30);
-				gc.strokeOval(getPosx(), getPosy(), 30, 30);
+//				gc.setFill(Color.LIGHTGREEN);
+//				gc.setStroke(Color.LIGHTGREEN);
+//				gc.setLineWidth(gc.getLineWidth()+0.5);
+//				gc.fillOval(getPosx(), getPosy(), 30, 30);
+//				gc.strokeOval(getPosx(), getPosy(), 30, 30);
 				 
 				//Paint new image
 				posx = getPosx()+newX*moveSpeed;
 				posy = getPosy()+newY*moveSpeed; 
 				paintMe(); 
-				hitBox.setLayoutX(getPosx()-10);
-				hitBox.setLayoutY(getPosy()-10);
+				
 			}
 
 			
@@ -143,12 +142,13 @@ public class Player extends Character{
 	
 	@Override
 	public void paintMe() {
-		gc.setFill(Color.RED);
-		gc.setStroke(Color.GREEN);
-		gc.setLineWidth(2);
-		gc.fillOval(getPosx(), getPosy(), 30, 30);
-		gc.strokeOval(getPosx(), getPosy(), 30, 30);
-		
+//		gc.setFill(Color.RED);
+//		gc.setStroke(Color.GREEN);
+//		gc.setLineWidth(2);
+//		gc.fillOval(getPosx(), getPosy(), 30, 30);
+//		gc.strokeOval(getPosx(), getPosy(), 30, 30);
+		hitBox.setLayoutX(getPosx()-10);
+		hitBox.setLayoutY(getPosy()-10);
 	}
 	
 }
