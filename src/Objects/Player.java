@@ -22,31 +22,13 @@ public class Player extends Character{
 		super(posx, posy, health);
 		moveSpeed = 3; 	
 		hitBox = new Circle(posx,posy,15);
+		hitBox.setLayoutX(posx);
+		hitBox.setLayoutY(posy);
 		hitBox.setFill(Color.RED);
 		hitBox.setStroke(Color.GREEN);
 		ProjectMain.mainlayout.getChildren().add(hitBox);
 		EntityList.add(hitBox);
 		GameProgram.entityList.add(this);
-		
-//		timeline = new Timeline(new KeyFrame(Duration.millis(16), event -> {
-//			move(newX,newY); 
-//			
-//		}));
-//		
-//		timeline.setCycleCount(Timeline.INDEFINITE);
-//		timeline.play();
-		
-		
-		
-		moveMe();
-		
-		timeline = new Timeline(new KeyFrame(Duration.millis(16), event -> {
-			move(newX,newY); 
-			
-		}));
-		
-		timeline.setCycleCount(Timeline.INDEFINITE);
-		timeline.play();
 		
 		ProjectMain.mainScene.setOnKeyPressed(e -> {
 			switch(e.getCode()) {
@@ -100,41 +82,38 @@ public class Player extends Character{
 	}
 
 	public void move(double newX, double newY) {
-		boolean hitsAWall = false; 
+		boolean hitsAWallX = false; 
+		boolean hitsAWallY = false; 
 		double moveSpeed = 3;
 		if (newX != 0 || newY != 0) {
 			if(newX != 0 && newY !=0) { 
 				moveSpeed= Math.sqrt(moveSpeed*2);
 			}
 			hitBox.setLayoutX(getPosx()+newX*moveSpeed);
-			hitBox.setLayoutY(getPosy()+newY*moveSpeed);
 			for (Shape s : EntityList) {
 				if (hitBox.getBoundsInParent().intersects(s.getBoundsInParent()) && s !=hitBox) {
-					hitsAWall = true; 
+					hitsAWallX = true; 
 					break;
 				}
 			}
 			hitBox.setLayoutX(posx);
+			
+			hitBox.setLayoutY(getPosy()+newY*moveSpeed);
+			for (Shape s : EntityList) {
+				if (hitBox.getBoundsInParent().intersects(s.getBoundsInParent()) && s !=hitBox) {
+					hitsAWallY = true; 
+					break;
+				}
+			}
 			hitBox.setLayoutY(posy);
 			 
-			if(hitsAWall == false) {
-//				gc.setFill(Color.LIGHTGREEN);
-//				gc.setStroke(Color.LIGHTGREEN);
-//				gc.setLineWidth(gc.getLineWidth()+0.5);
-//				gc.fillOval(getPosx(), getPosy(), 30, 30);
-//				gc.strokeOval(getPosx(), getPosy(), 30, 30);
-				 
-				//Paint new image
+			if(hitsAWallX == false) {				 
 				posx = getPosx()+newX*moveSpeed;
-				posy = getPosy()+newY*moveSpeed; 
-				moveMe(); 
-
-				
 			}
-
-			
-		}
-		
+			if (hitsAWallY == false) {
+				posy = getPosy()+newY*moveSpeed; 	
+			}			
+		}		
 	}
 
 	public void shoot() {
@@ -143,20 +122,13 @@ public class Player extends Character{
 	}
 
 	@Override
-	protected void setShape() {
-		// TODO Auto-generated method stub
-		
+	protected void setShape() {		
 	}
 	
 	@Override
 	public void moveMe() {
-//		gc.setFill(Color.RED);
-//		gc.setStroke(Color.GREEN);
-//		gc.setLineWidth(2);
-//		gc.fillOval(getPosx(), getPosy(), 30, 30);
-//		gc.strokeOval(getPosx(), getPosy(), 30, 30);
-//		hitBox.setLayoutX(getPosx()-10);
-//		hitBox.setLayoutY(getPosy()-10);
+		move(newX,newY);
+
 	}
 	
 }

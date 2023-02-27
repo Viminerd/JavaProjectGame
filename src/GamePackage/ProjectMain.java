@@ -29,11 +29,7 @@ public class ProjectMain extends Application {
 
 		mainlayout = new BorderPane();
 		CanvasPaintMe();
-//		gc.setFill(Color.LIGHTGREEN);
-//		gc.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
-//		gameCanvas.setOnMouseClicked(event -> {
-//			System.out.println("MOUSE CLIKC");
-//		});
+
 
 		mainlayout.setCenter(gameCanvas);
 		mainScene = new Scene(mainlayout);

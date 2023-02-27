@@ -29,7 +29,7 @@ public class LavaPool extends Entity {
 		GameProgram.entityList.add(this); 
 		
 		
-		hitBox = new Rectangle(posx, posy, posx+50, posy+50);
+		hitBox = new Rectangle(posx, posx+30, posy, posy+30);
 		hitBox.setFill(Color.ORANGE);
 		hitBox.setStroke(Color.RED);
 		EntityList.add(hitBox); 

@@ -24,8 +24,8 @@ public class GameProgram {
 			}
 
 		}));
-		//timeline.setCycleCount(Timeline.INDEFINITE);
-		//timeline.play();
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
 
 	}
 
