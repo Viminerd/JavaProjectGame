@@ -35,6 +35,11 @@ public class ProjectMain extends Application {
 		mainScene = new Scene(mainlayout);
 		primaryStage.setScene(mainScene);
 		primaryStage.show();
+		primaryStage.setMinHeight(600);
+		primaryStage.setMinWidth(1200);
+		primaryStage.setMaxHeight(600);
+		primaryStage.setMaxWidth(1200);
+
 
 		runGame("hard"); // test
 
