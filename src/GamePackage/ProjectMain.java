@@ -48,7 +48,6 @@ public class ProjectMain extends Application {
 
 	public void runGame(String difficulty) {
 		GameProgram newGame = new GameProgram(difficulty);
-		Player player = new Player(10, 10, 10);
 
 	}
 

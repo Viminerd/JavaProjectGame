@@ -13,7 +13,7 @@ public abstract class Enemy extends Character {
 	 * @param posy
 	 * @param health
 	 */
-	public Player target; 
+	protected Player target; 
 	public Enemy(double posx, double posy, int health, Player p) {
 		super(posx, posy, health);
 		target = p; 

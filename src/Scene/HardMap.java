@@ -5,6 +5,7 @@ package Scene;
 
 import Objects.LavaPool;
 import Objects.Pillar;
+import Objects.Ranged;
 
 /**
  *
