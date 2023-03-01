@@ -16,19 +16,27 @@ public class GameProgram {
 	public static ArrayList<Entity> entityList = new ArrayList<>();
 	public static ArrayList<Entity> tempList = new ArrayList<>(); 
 	private Player player; 
-	private boolean temp = true; 
+	public static boolean gameRunning = true; 
 
 	public GameProgram(String difficulty) {
+		
 		tempList.addAll(entityList); 
 		this.difficulty = difficulty;
 		Map();
+		
 		timeline = new Timeline(new KeyFrame(Duration.millis(16), event -> {
-			ProjectMain.CanvasPaintMe();
-			tempList.clear(); 
-			tempList.addAll(entityList); 
-			for (Entity entity : tempList) {
-				entity.moveMe();
+			if (gameRunning) {
+				ProjectMain.CanvasPaintMe();
+				tempList.clear(); 
+				tempList.addAll(entityList); 
+				for (Entity entity : tempList) {
+					entity.moveMe();
+				}
 			}
+			else {
+				timeline.stop();
+			}
+
 			
 		}));
 		timeline.setCycleCount(Timeline.INDEFINITE);
@@ -43,7 +51,7 @@ public class GameProgram {
 		} else if (difficulty.equals("hard")) {
 			hardMap();
 		}
-		player = new Player(10, 10, 10);
+		player = new Player(10, 10, 100);
 	}
 
 	public void easyMap() {

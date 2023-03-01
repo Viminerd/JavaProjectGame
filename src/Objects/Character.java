@@ -6,7 +6,7 @@ package Objects;
  * set position and health for characters
  */
 public abstract class Character extends Entity {
-	private int health;
+	protected int health;
 
 	public Character(double posx, double posy, int health) {
 		super(posx, posy);

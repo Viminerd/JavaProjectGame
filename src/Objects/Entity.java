@@ -6,6 +6,7 @@ package Objects;
 
 import java.util.ArrayList;
 
+import GamePackage.GameProgram;
 import GamePackage.ProjectMain;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -42,6 +43,12 @@ public abstract class Entity extends Canvas {
 
 	public void setPosx(double posx) {
 		this.posx = posx;
+	}
+	
+	public void delete() {
+		ProjectMain.mainlayout.getChildren().remove(this.hitBox); 
+		EntityList.remove(this.hitBox); 
+		GameProgram.entityList.remove(this); 
 	}
 
 	public double getPosy() {

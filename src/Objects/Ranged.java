@@ -70,7 +70,7 @@ public class Ranged extends Enemy {
 	public void moveMe() {
 		rotateTo(target);
 		
-		if (shootDelay == 77) {
+		if (shootDelay == 30) {
 			shoot(); 
 			shootDelay = 0; 
 		}
@@ -91,7 +91,7 @@ public class Ranged extends Enemy {
 	}
 	
 	private void shoot() {
-		new EnemyBullet(posx,posy,hitBox.getRotate()-90,10);
+		new EnemyBullet(posx,posy,hitBox.getRotate()-90, target, 10);
 		System.out.println("BANG");
 	}
 	

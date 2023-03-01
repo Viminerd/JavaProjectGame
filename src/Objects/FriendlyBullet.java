@@ -9,13 +9,13 @@ package Objects;
  */
 public class FriendlyBullet extends Bullet{
 
-	public FriendlyBullet(double posx, double posy, int damage) {
-		super(posx, posy, damage);
+	public FriendlyBullet(double posx, double posy, double rotation, int damage) {
+		super(posx, posy, rotation, damage);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void onCollision(Entity entity) {
+	public void onCollision() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -26,10 +26,5 @@ public class FriendlyBullet extends Bullet{
 		
 	}
 
-	@Override
-	public void moveMe() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

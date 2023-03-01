@@ -7,6 +7,7 @@ import GamePackage.ProjectMain;
 import Scene.GameScene;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseButton;
@@ -60,6 +61,10 @@ public class Player extends Character {
 
 		});
 
+		
+		
+		
+		//Dessa måste ligga i en move-funktion för att inte kunna användas när spelet är pausat.
 		ProjectMain.mainScene.setOnKeyReleased(e -> {
 			switch (e.getCode()) {
 			case W:
@@ -97,7 +102,6 @@ public class Player extends Character {
 			}
 			if (e.isPrimaryButtonDown()) {
 				primaryMousePressed = true;
-				shoot();
 			}
 	
 		});
@@ -111,7 +115,7 @@ public class Player extends Character {
 				
 			if (e.isPrimaryButtonDown()) {
 				primaryMousePressed = true;
-				shoot();
+				shoot(e.getX(),e.getY());
 			}
 		});
 
@@ -164,8 +168,15 @@ public class Player extends Character {
 		}
 	}
 
-	private void shoot() {
+	private void shoot(double x, double y) {
 		System.out.println("Pew Pew");
+		
+		Point2D point1 = new Point2D(getPosx()+15, getPosy());
+		Point2D point2 = new Point2D(x,y);
+		Point2D vector = point2.subtract(point1);
+		double angleRad = Math.atan2(vector.getY(), vector.getX());
+		double angle = Math.toDegrees(angleRad);
+		new FriendlyBullet(posx,posy,angle,10);   //ändra rotation här "0", till vinkeln baserad på eventX och eventY. Ex i ranged.
 
 	}
 
@@ -191,6 +202,15 @@ public class Player extends Character {
 	@Override
 	public void moveMe() {
 		move(newX, newY);
+	}
+
+	public void damage(int damage) {
+		health -=damage;
+		if (health <1) {
+			System.out.println("Player dead");
+			GameProgram.gameRunning = false; 
+		}
+		
 	}
 
 }
