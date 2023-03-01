@@ -45,8 +45,9 @@ public class ProjectMain extends Application {
 
 	}
 	public static void CanvasPaintMe() {
+		
 		gameCanvas.getGraphicsContext2D().setFill(Color.LIGHTGREEN);
-		gameCanvas.getGraphicsContext2D().fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+		gameCanvas.getGraphicsContext2D().fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());		
 		
 	}
 
