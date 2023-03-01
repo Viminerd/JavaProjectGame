@@ -15,10 +15,10 @@ public class GameProgram {
 
 	public GameProgram(String difficulty) {
 		this.difficulty = difficulty;
-		// Scene.EasyMap map = new Scene.EasyMap();
 		Map();
 		timeline = new Timeline(new KeyFrame(Duration.millis(16), event -> {
 			ProjectMain.CanvasPaintMe();
+			
 			for (Entity entity : entityList) {
 				entity.moveMe();
 			}
@@ -30,13 +30,11 @@ public class GameProgram {
 	}
 
 	public void Map() {
-
 		if (difficulty.equals("easy")) {
 			easyMap();
 		} else if (difficulty.equals("hard")) {
 			hardMap();
 		}
-
 	}
 
 	public void easyMap() {
