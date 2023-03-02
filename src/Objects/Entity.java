@@ -33,6 +33,10 @@ public abstract class Entity extends Canvas {
 		this.posy = posy;
 	}
 
+	public Shape getHitBox() {
+		return hitBox;
+	}
+
 	public void move() {
 
 	}
