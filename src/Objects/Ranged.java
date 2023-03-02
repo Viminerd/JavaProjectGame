@@ -95,6 +95,13 @@ public class Ranged extends Enemy {
 		System.out.println("BANG");
 	}
 	
+	public void damage(double d) {
+		health -= d; 
+		if (health <1) {
+			removeEntity(); 
+		}
+	}
+	
 
 	
 

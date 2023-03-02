@@ -3,6 +3,8 @@
  */
 package Objects;
 
+import GamePackage.GameProgram;
+
 /**
  * @author osclo923
  *
@@ -16,7 +18,13 @@ public class FriendlyBullet extends Bullet{
 
 	@Override
 	public void onCollision() {
-		// TODO Auto-generated method stub
+		for (Entity entity : GameProgram.entityList) {
+			if (entity instanceof Enemy) {
+				if (hitBox.getBoundsInLocal().intersects(entity.getHitBox().getBoundsInParent())) {
+					entity.damage(damage); 
+				}
+			}
+		}
 		
 	}
 
