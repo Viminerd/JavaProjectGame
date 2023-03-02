@@ -25,21 +25,22 @@ public class EnemyBullet extends Bullet{
 
 	@Override
 	public void onCollision() {
-		for (Shape entity : EntityList) {
+		for (Entity entity : GameProgram.entityList) {
 			
-			if (entity instanceof Circle) {
-				if (hitBox.getBoundsInParent().intersects(entity.getBoundsInParent()) && entity != hitBox) {
-					if (((Circle) entity).getRadius() == 15){
-						p.damage(damage);
-					}
+			if (entity instanceof Player) {
+				if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent())) {
+					p.damage(damage);
 					this.delete(); 
 					break;
 				}
 			}
+				
 		}
+			
+	}
 		// TODO Auto-generated method stub
 		
-	}
+	
 
 	@Override
 	protected void setShape() {
