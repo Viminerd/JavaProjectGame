@@ -203,7 +203,8 @@ public class Player extends Character {
 		move(newX, newY);
 	}
 
-	public void damage(int damage) {
+	@Override
+	public void damage(double damage) {
 		health -=damage;
 		if (health <1) {
 			System.out.println("Player dead");
