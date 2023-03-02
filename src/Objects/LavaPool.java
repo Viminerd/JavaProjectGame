@@ -32,7 +32,6 @@ public class LavaPool extends Entity {
 		hitBox = new Rectangle(posx, posx+30, posy, posy+30);
 		hitBox.setFill(Color.ORANGE);
 		hitBox.setStroke(Color.RED);
-		EntityList.add(hitBox); 
 		ProjectMain.mainlayout.getChildren().add(hitBox);
 	}
 

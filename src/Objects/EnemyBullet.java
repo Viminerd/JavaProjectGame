@@ -26,7 +26,6 @@ public class EnemyBullet extends Bullet{
 	@Override
 	public void onCollision() {
 		for (Entity entity : GameProgram.entityList) {
-			
 			if (entity instanceof Player) {
 				if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent())) {
 					p.damage(damage);

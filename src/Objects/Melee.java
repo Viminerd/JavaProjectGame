@@ -3,6 +3,7 @@
  */
 package Objects;
 
+import GamePackage.GameProgram;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -23,7 +24,7 @@ public class Melee extends Enemy {
 		hitBox = new Rectangle(posx,posy,Color.AQUA);
 		hitBox.setFill(Color.MAGENTA);
 		hitBox.setStroke(Color.BLACK);
-		EntityList.add(hitBox); 
+		GameProgram.entityList.add(this); 
 		
 	}
 
