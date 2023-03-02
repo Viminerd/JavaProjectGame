@@ -54,7 +54,8 @@ public abstract class Entity extends Canvas {
 	}
 	
 	public void addEntity() {
-		ProjectMain.mainlayout.getChildren().add(this);
+		ProjectMain.mainlayout.getChildren().add(this.hitBox);
+		GameProgram.entityList.add(this); 
 	}
 
 	public double getPosy() {
@@ -67,6 +68,10 @@ public abstract class Entity extends Canvas {
 
 
 	public abstract void moveMe();
+	
+	public void damage(double d) {
+		//not abstract because i did not want to need to implement it for all classes
+	}
 	
 
 }

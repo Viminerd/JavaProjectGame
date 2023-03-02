@@ -42,8 +42,9 @@ public class Ranged extends Enemy {
 		hitBox = triangle;
 		hitBox.setFill(Color.AQUA);
 		hitBox.setRotate(0);
-		ProjectMain.mainlayout.getChildren().add(hitBox);
-		EntityList.add(hitBox);
+		this.addEntity(); 
+//		ProjectMain.mainlayout.getChildren().add(hitBox);
+//		EntityList.add(hitBox);
 		
 		
 		
@@ -95,6 +96,7 @@ public class Ranged extends Enemy {
 		System.out.println("BANG");
 	}
 	
+	@Override
 	public void damage(double d) {
 		health -= d; 
 		if (health <1) {

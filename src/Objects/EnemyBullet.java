@@ -28,8 +28,8 @@ public class EnemyBullet extends Bullet{
 		for (Entity entity : GameProgram.entityList) {
 			if (entity instanceof Player) {
 				if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent())) {
-					p.damage(damage);
-					this.delete(); 
+					entity.damage(damage);
+					this.removeEntity(); 
 					break;
 				}
 			}
