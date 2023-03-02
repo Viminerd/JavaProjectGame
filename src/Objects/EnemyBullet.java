@@ -32,7 +32,7 @@ public class EnemyBullet extends Bullet{
 					if (((Circle) entity).getRadius() == 15){
 						p.damage(damage);
 					}
-					this.delete(); 
+					this.removeEntity(); 
 					break;
 				}
 			}

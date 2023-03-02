@@ -18,7 +18,6 @@ import javafx.scene.shape.Shape;
  */
 public abstract class Entity extends Canvas {
 	
-	public static ArrayList<Shape> EntityList = new ArrayList<>();  
 	protected Canvas objectCanvas = new Canvas(1000,1000); 
 	protected GraphicsContext gc = ProjectMain.gameCanvas.getGraphicsContext2D();
 	
@@ -49,10 +48,13 @@ public abstract class Entity extends Canvas {
 		this.posx = posx;
 	}
 	
-	public void delete() {
+	public void removeEntity() {
 		ProjectMain.mainlayout.getChildren().remove(this.hitBox); 
-		EntityList.remove(this.hitBox); 
 		GameProgram.entityList.remove(this); 
+	}
+	
+	public void addEntity() {
+		ProjectMain.mainlayout.getChildren().add(this);
 	}
 
 	public double getPosy() {
@@ -63,10 +65,7 @@ public abstract class Entity extends Canvas {
 		this.posy = posy;
 	}
 
-	public void removeEntity() {
-		//gc = getGraphicsContext2D(); // creates empty gc
-	}
-	
+
 	public abstract void moveMe();
 	
 

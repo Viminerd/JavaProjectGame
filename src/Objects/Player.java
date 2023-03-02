@@ -38,7 +38,6 @@ public class Player extends Character {
 		hitBox.setFill(Color.RED);
 		hitBox.setStroke(Color.GREEN);
 		ProjectMain.mainlayout.getChildren().add(hitBox);
-		EntityList.add(hitBox);
 		GameProgram.entityList.add(this);
 
 		ProjectMain.mainScene.setOnKeyPressed(e -> {
@@ -142,8 +141,8 @@ public class Player extends Character {
 				moveSpeed = Math.sqrt(moveSpeed * 2);
 			}
 			hitBox.setLayoutX(getPosx() + newX * moveSpeed);
-			for (Shape s : EntityList) {
-				if (hitBox.getBoundsInParent().intersects(s.getBoundsInParent()) && s != hitBox) {
+			for (Entity entity : GameProgram.entityList) {
+				if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent()) && entity.getHitBox() != hitBox) {
 					hitsAWallX = true;
 					break;
 				}
@@ -151,8 +150,8 @@ public class Player extends Character {
 			hitBox.setLayoutX(posx);
 
 			hitBox.setLayoutY(getPosy() + newY * moveSpeed);
-			for (Shape s : EntityList) {
-				if (hitBox.getBoundsInParent().intersects(s.getBoundsInParent()) && s != hitBox) {
+			for (Entity entity : GameProgram.entityList) {
+				if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent()) && entity.getHitBox() != hitBox) {
 					hitsAWallY = true;
 					break;
 				}

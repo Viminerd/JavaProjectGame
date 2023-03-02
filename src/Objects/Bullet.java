@@ -25,7 +25,6 @@ public abstract class Bullet extends Entity{
 		hitBox.setFill(Color.BLACK);
 		hitBox.setRotate(rotation-90);
 		ProjectMain.mainlayout.getChildren().add(hitBox);
-		EntityList.add(hitBox);
 		GameProgram.entityList.add(this); 
 		setPosx(0);
 		setPosy(0); 

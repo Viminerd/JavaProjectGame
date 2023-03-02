@@ -32,7 +32,6 @@ public class Pillar extends Entity {
 		hitBox.setFill(Color.WHITE);
 		hitBox.setStroke(Color.BLACK); 
 		ProjectMain.mainlayout.getChildren().add(hitBox);
-		EntityList.add(hitBox);
 		
 		GameProgram.entityList.add(this); 
 	}
