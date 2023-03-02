@@ -12,7 +12,13 @@ import javafx.beans.property.ObjectProperty;
 import javafx.geometry.Point2D;
 import javafx.geometry.Point3D;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Transform;
 
@@ -29,6 +35,8 @@ public class Ranged extends Enemy {
 	 * @param p
 	 */
 	private int shootDelay = 0; 
+	private Rectangle healthBar;
+	private Rectangle missingHealth; 
 	public Ranged(double posx, double posy, Player p) {
 		
 		super(posx, posy, 100,p);
@@ -42,13 +50,17 @@ public class Ranged extends Enemy {
 		hitBox = triangle;
 		hitBox.setFill(Color.AQUA);
 		hitBox.setRotate(0);
-		this.addEntity(); 
-//		ProjectMain.mainlayout.getChildren().add(hitBox);
-//		EntityList.add(hitBox);
+		addEntity(); 
 		
+		healthBar = new Rectangle(posx-15,posy-30,30,5); 
+		healthBar.setFill(null);
 		
+		missingHealth = new Rectangle(posx+15, posy-30,0,5); 
+		missingHealth.setFill(Color.RED);
+
 		
-		// TODO Auto-generated constructor stub
+		ProjectMain.mainlayout.getChildren().add(healthBar); 
+		ProjectMain.mainlayout.getChildren().add(missingHealth); 
 	}
 
 	@Override
@@ -67,7 +79,7 @@ public class Ranged extends Enemy {
 		
 	}
 	
-		@Override
+	@Override
 	public void moveMe() {
 		rotateTo(target);
 		
@@ -93,15 +105,22 @@ public class Ranged extends Enemy {
 	
 	private void shoot() {
 		new EnemyBullet(posx,posy,hitBox.getRotate()-90, target, 10);
-		System.out.println("BANG");
 	}
 	
 	@Override
 	public void damage(double d) {
+		System.out.println("RANGED GOT DMGED");
 		health -= d; 
+		healthBar.setFill(Color.GREEN);
+		missingHealth.setWidth(missingHealth.getWidth()+30/d);
+		missingHealth.setLayoutX(missingHealth.getLayoutX()-30/d);		
+		
 		if (health <1) {
-			removeEntity(); 
+			this.removeEntity(); 
+			ProjectMain.mainlayout.getChildren().remove(healthBar); 
+			ProjectMain.mainlayout.getChildren().remove(missingHealth); 
 		}
+			
 	}
 	
 

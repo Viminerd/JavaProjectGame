@@ -50,7 +50,7 @@ public abstract class Entity extends Canvas {
 	
 	public void removeEntity() {
 		ProjectMain.mainlayout.getChildren().remove(this.hitBox); 
-		GameProgram.entityList.remove(this); 
+		GameProgram.entityList.remove(this);
 	}
 	
 	public void addEntity() {

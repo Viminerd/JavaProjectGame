@@ -29,7 +29,7 @@ public class GameProgram {
 				ProjectMain.CanvasPaintMe();
 				tempList.clear(); 
 				tempList.addAll(entityList); 
-				for (Entity entity : tempList) {
+				for (Entity entity : tempList) {					
 					entity.moveMe();
 				}
 			}
@@ -41,7 +41,7 @@ public class GameProgram {
 		}));
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
-		entityList.add(new Ranged(500, 300, player));
+		new Ranged(500, 300, player);
 
 	}
 

@@ -45,12 +45,23 @@ public class LavaPool extends Entity {
 	public void moveMe() {
 		hitBox.setLayoutX(posx);
 		hitBox.setLayoutY(posy);
-//		gc.setFill(Color.ORANGE);
-//		gc.setStroke(Color.RED);
-//		gc.setLineWidth(2);
-//		gc.fillOval(posx - radie/2, posy - radie/2, radie, radie*3);
-//		gc.strokeOval(posx - radie/2, posy - radie/2, radie, radie*3);
+		onCollision(); 
+
 		
+		
+	}
+
+	private void onCollision() {
+		for (Entity entity : GameProgram.entityList) {
+			if (entity instanceof Player || entity instanceof Enemy) {
+				if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent())) {
+					entity.damage(10000);
+					break;
+				}
+			}
+				
+		}
+		// TODO Auto-generated method stub
 		
 	}
 
