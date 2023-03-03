@@ -3,6 +3,7 @@ package GamePackage;
 import java.util.ArrayList;
 
 import Objects.Entity;
+import Objects.Melee;
 import Objects.Player;
 import Objects.Ranged;
 import javafx.animation.KeyFrame;
@@ -71,6 +72,7 @@ public class GameProgram {
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
 		new Ranged(500, 300, player);
+		new Melee(600, 200, player);
 
 	}
 
