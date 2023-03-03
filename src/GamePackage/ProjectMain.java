@@ -6,10 +6,12 @@ package GamePackage;
 
 import Objects.Player;
 import Scene.EasyMap;
+import Scene.MainMenu;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -28,10 +30,15 @@ public class ProjectMain extends Application {
 		primaryStage.setTitle("Projekt TDDE10");
 
 		mainlayout = new BorderPane();
-		CanvasPaintMe();
+//		Button b = new Button("CLICK ME"); 
+//		mainlayout.setCenter(b);
+
+		new MainMenu();
+//		mainlayout.setCenter(new MainMenu());
+		
 
 
-		mainlayout.setCenter(gameCanvas);
+		//mainlayout.setCenter(gameCanvas);
 		mainScene = new Scene(mainlayout);
 		primaryStage.setScene(mainScene);
 		primaryStage.show();
@@ -41,7 +48,7 @@ public class ProjectMain extends Application {
 		primaryStage.setMaxWidth(1200);
 
 
-		runGame("hard"); // test
+		//runGame("hard"); // test
 
 	}
 	public static void CanvasPaintMe() {

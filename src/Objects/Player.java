@@ -5,6 +5,7 @@ import java.awt.geom.RectangularShape;
 import GamePackage.GameProgram;
 import GamePackage.ProjectMain;
 import Scene.GameScene;
+import Scene.MainMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Point2D;
@@ -233,6 +234,7 @@ public class Player extends Character {
 			System.out.println("Player dead");
 			missingHealthBar.setWidth(72);
 			GameProgram.gameRunning = false;
+			MainMenu.gameOver(); 
 		}
 
 	}
