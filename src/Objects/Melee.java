@@ -91,6 +91,7 @@ public class Melee extends Enemy {
 			this.removeEntity(); 
 			ProjectMain.mainlayout.getChildren().remove(healthBar); 
 			ProjectMain.mainlayout.getChildren().remove(missingHealthBar); 
+			GameProgram.addScore(15);
 		}
 			
 	}

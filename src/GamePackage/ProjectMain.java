@@ -30,15 +30,9 @@ public class ProjectMain extends Application {
 		primaryStage.setTitle("Projekt TDDE10");
 
 		mainlayout = new BorderPane();
-//		Button b = new Button("CLICK ME"); 
-//		mainlayout.setCenter(b);
 
 		new MainMenu();
-//		mainlayout.setCenter(new MainMenu());
-		
 
-
-		//mainlayout.setCenter(gameCanvas);
 		mainScene = new Scene(mainlayout);
 		primaryStage.setScene(mainScene);
 		primaryStage.show();
@@ -46,9 +40,6 @@ public class ProjectMain extends Application {
 		primaryStage.setMinWidth(1200);
 		primaryStage.setMaxHeight(600);
 		primaryStage.setMaxWidth(1200);
-
-
-		//runGame("hard"); // test
 
 	}
 	public static void CanvasPaintMe() {

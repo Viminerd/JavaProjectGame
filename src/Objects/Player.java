@@ -183,7 +183,7 @@ public class Player extends Character {
 		Point2D vector = point2.subtract(point1);
 		double angleRad = Math.atan2(vector.getY(), vector.getX());
 		double angle = Math.toDegrees(angleRad);
-		new FriendlyBullet(posx, posy, angle, 10); // ändra rotation här "0", till vinkeln baserad på eventX och eventY.
+		new FriendlyBullet(posx, posy, angle, 20); // ändra rotation här "0", till vinkeln baserad på eventX och eventY.
 													// Ex i ranged.
 
 	}

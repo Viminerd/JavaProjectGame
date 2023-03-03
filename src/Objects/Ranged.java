@@ -43,8 +43,9 @@ public class Ranged extends Enemy {
 	private double dir = 0;
 	private int changeDir = 1; 
 	public Ranged(double posx, double posy, Player p) {
-		
 		super(posx, posy, 100,p);
+		
+		shootDelay = -40; //Wait a bit after spawn to start shooting
 		centerX = posx;
 		centerY = posy; 
 		Polygon triangle = new Polygon(); 
@@ -123,19 +124,13 @@ public class Ranged extends Enemy {
 	public void damage(double d) {
 		health -= d; 
 		healthBar.setFill(Color.GREEN);
-		missingHealth.setWidth(missingHealth.getWidth()+30/d);
-//	    missingHealth.setLayoutX(posx-centerX-missingHealth.getWidth());		
+		missingHealth.setWidth(missingHealth.getWidth()+(30/10)*d/10); //Blir noll med 30/100*d och inte detta??	
 		
 		if (health <1) {
 			this.removeEntity(); 
 			ProjectMain.mainlayout.getChildren().remove(healthBar); 
 			ProjectMain.mainlayout.getChildren().remove(missingHealth); 
-		}
-			
+			GameProgram.addScore(10); 
+		}			
 	}
-	
-
-	
-
-
 }
