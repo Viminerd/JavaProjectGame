@@ -37,10 +37,16 @@ public class Ranged extends Enemy {
 	private int shootDelay = 0; 
 	private Rectangle healthBar;
 	private Rectangle missingHealth; 
+	
+	private double centerX; 
+	private double centerY; 
+	private double dir = 0;
+	private int changeDir = 1; 
 	public Ranged(double posx, double posy, Player p) {
 		
 		super(posx, posy, 100,p);
-		
+		centerX = posx;
+		centerY = posy; 
 		Polygon triangle = new Polygon(); 
 		triangle.getPoints().setAll(
 				posx-20, posy+20,
@@ -82,12 +88,27 @@ public class Ranged extends Enemy {
 	@Override
 	public void moveMe() {
 		rotateTo(target);
-		
 		if (shootDelay == 30) {
 			shoot(); 
 			shootDelay = 0; 
 		}
 		shootDelay++; 
+		 
+		if (Math.abs(posx -centerX) <2 && Math.abs(posy -centerY) <2) {
+			dir = hitBox.getRotate()-90; 
+		}
+		double x = Math.cos(dir); 
+		double y = -Math.sin(dir); 
+
+		if (Math.abs(posx-centerX)>50 || Math.abs(posy-centerY)>50) {
+			changeDir *= -1;
+
+		}
+		posx = posx + x*changeDir; 
+		posy = posy + y*changeDir; 
+		hitBox.setLayoutX(posx-centerX);
+		hitBox.setLayoutY(posy-centerY);
+		
 	}
 	
 		
@@ -109,7 +130,6 @@ public class Ranged extends Enemy {
 	
 	@Override
 	public void damage(double d) {
-		System.out.println("RANGED GOT DMGED");
 		health -= d; 
 		healthBar.setFill(Color.GREEN);
 		missingHealth.setWidth(missingHealth.getWidth()+30/d);
