@@ -17,6 +17,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 public class Player extends Character {
@@ -46,14 +47,15 @@ public class Player extends Character {
 		GameProgram.entityList.add(this);
 		
 		
-		healthBar = new Rectangle(posx, posy, 10 , 10);
+		healthBar = new Rectangle(posx -10, posy-17, 70 , 10);
 		healthBar.setFill(Color.GREEN);
 		ProjectMain.mainlayout.getChildren().add(this.healthBar);
 		
 
 
-		missingHealthBar = new Rectangle(posx+8-35+70*healthScale, posy-17, 0 , 10);
+		missingHealthBar = new Rectangle(posx, posy-7,0,10);
 		missingHealthBar.setFill(Color.RED);
+		missingHealthBar.getTransforms().add(new Rotate(180,missingHealthBar.getX(),missingHealthBar.getY()));
 		ProjectMain.mainlayout.getChildren().add(missingHealthBar);
 
 		ProjectMain.mainScene.setOnKeyPressed(e -> {
@@ -213,17 +215,15 @@ public class Player extends Character {
 	
 	private void updateHealthBar() {
 		healthScale = health/maxHealth;
-//		ProjectMain.mainlayout.getChildren().remove(healthBar);
-//		ProjectMain.mainlayout.getChildren().remove(missingHealthBar);
-		healthBar.setWidth(70*healthScale);
 		healthBar.setLayoutX(posx+8-35);
 		healthBar.setLayoutY(posy-17);
-//		healthBar = new Rectangle(posx+8-35,posy-17 ,70*healthScale,10);
-		healthBar.setFill(Color.GREEN);
-		
-		missingHealthBar.setFill(Color.RED);
-		missingHealthBar.setWidth(health);
 
+		healthBar.setFill(Color.GREEN);
+
+		missingHealthBar.setWidth(70*(1-healthScale));
+		missingHealthBar.setLayoutX(posx+35);
+		missingHealthBar.setLayoutY(posy-17);
+		missingHealthBar.setFill(Color.RED);
 	}
 
 	@Override
@@ -231,6 +231,7 @@ public class Player extends Character {
 		health -= damage;
 		if (health < 1) {
 			System.out.println("Player dead");
+			missingHealthBar.setWidth(72);
 			GameProgram.gameRunning = false;
 		}
 
