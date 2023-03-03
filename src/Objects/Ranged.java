@@ -90,18 +90,6 @@ public class Ranged extends Enemy {
 		shootDelay++; 
 	}
 	
-		
-	private void rotateTo(Player p) {
-		
-		Point2D point1 = new Point2D(posx, posy);
-		Point2D point2 = new Point2D(p.getPosx()+15, p.getPosy()+15);
-		Point2D vector = point2.subtract(point1);
-		double angleRad = Math.atan2(vector.getY(), vector.getX());
-		double angle = Math.toDegrees(angleRad)+90;
-		
-		hitBox.setRotate(angle);
-
-	}
 	
 	private void shoot() {
 		new EnemyBullet(posx,posy,hitBox.getRotate()-90, target, 10);

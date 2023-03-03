@@ -4,8 +4,11 @@
 package Objects;
 
 import GamePackage.GameProgram;
+import GamePackage.ProjectMain;
+import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Rotate;
 
 /**
  * 
@@ -19,12 +22,27 @@ public class Melee extends Enemy {
 	 * @param health
 	 * @param p
 	 */
-	public Melee(double posx, double posy, int health, Player p) {
+	
+	private Rectangle healthBar; 
+	private Rectangle missingHealthBar; 
+	private double healthScale;
+	private double maxHealth;
+	
+	public Melee(double posx, double posy, Player p) {
 		super(posx, posy, 200, p);
-		hitBox = new Rectangle(posx,posy,Color.AQUA);
+		hitBox = new Rectangle(posx,posy,25,25);
 		hitBox.setFill(Color.MAGENTA);
-		hitBox.setStroke(Color.BLACK);
-		GameProgram.entityList.add(this); 
+		hitBox.setRotate(0);
+		addEntity();
+		
+		
+		healthBar = new Rectangle(posx, posy, 30 , 5);
+		healthBar.setFill(null);
+		ProjectMain.mainlayout.getChildren().add(healthBar);
+
+		missingHealthBar = new Rectangle(posx, posy,0,5);
+		missingHealthBar.getTransforms().add(new Rotate(180,missingHealthBar.getX(),missingHealthBar.getY()));
+		ProjectMain.mainlayout.getChildren().add(missingHealthBar);
 		
 	}
 
@@ -36,7 +54,10 @@ public class Melee extends Enemy {
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
+		boolean hitsAWallX = false;
+		boolean hitsAWallY = false;
+		double moveSpeed = 2;
+		
 		
 	}
 
@@ -48,7 +69,31 @@ public class Melee extends Enemy {
 
 	@Override
 	public void moveMe() {
-		// TODO Auto-generated method stub
+		rotateTo(target);
+		move();
 		
 	}
+	
+	public void damage(double d) {
+		System.out.println("M GOT DMGED");
+		health -= d; 
+		healthScale = health/maxHealth;
+		healthBar.setLayoutX(getLayoutX()-2);
+		healthBar.setLayoutY(getLayoutY()-15);
+		healthBar.setFill(Color.GREEN);		
+
+		
+		missingHealthBar.setLayoutX(missingHealthBar.getLayoutX()+10);
+		missingHealthBar.setLayoutY(missingHealthBar.getLayoutY()-15);
+		missingHealthBar.setWidth(30*(1-healthScale));
+		missingHealthBar.setFill(Color.RED);
+		if (health <1) {
+			this.removeEntity(); 
+			ProjectMain.mainlayout.getChildren().remove(healthBar); 
+			ProjectMain.mainlayout.getChildren().remove(missingHealthBar); 
+		}
+			
+	}
+	
+
 }

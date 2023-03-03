@@ -43,15 +43,13 @@ public class Player extends Character {
 		hitBox.setLayoutY(posy);
 		hitBox.setFill(Color.RED);
 		hitBox.setStroke(Color.GREEN);
-		ProjectMain.mainlayout.getChildren().add(hitBox);
-		GameProgram.entityList.add(this);
+		addEntity();
 		
 		
 		healthBar = new Rectangle(posx -10, posy-17, 70 , 10);
 		healthBar.setFill(Color.GREEN);
-		ProjectMain.mainlayout.getChildren().add(this.healthBar);
+		ProjectMain.mainlayout.getChildren().add(healthBar);
 		
-
 
 		missingHealthBar = new Rectangle(posx, posy-7,0,10);
 		missingHealthBar.setFill(Color.RED);
