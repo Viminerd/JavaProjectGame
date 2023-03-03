@@ -21,7 +21,6 @@ public class FriendlyBullet extends Bullet{
 		for (Entity entity : GameProgram.entityList) {
 			if (entity instanceof Pillar && hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent())) {
 				removeEntity(); 
-				System.out.println("HIT PILLAR");
 				break;
 			}
 			else if (entity instanceof Enemy) {
