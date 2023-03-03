@@ -108,7 +108,10 @@ public class Ranged extends Enemy {
 		posy = posy + y*changeDir; 
 		hitBox.setLayoutX(posx-centerX);
 		hitBox.setLayoutY(posy-centerY);
-		
+		healthBar.setLayoutX(posx-centerX);
+		healthBar.setLayoutY(posy-centerY); 
+		missingHealth.setLayoutX(getLayoutX()+(posx-centerX)-missingHealth.getWidth());
+		missingHealth.setLayoutY(posy-centerY); 		
 	}
 	
 		
@@ -133,7 +136,7 @@ public class Ranged extends Enemy {
 		health -= d; 
 		healthBar.setFill(Color.GREEN);
 		missingHealth.setWidth(missingHealth.getWidth()+30/d);
-		missingHealth.setLayoutX(missingHealth.getLayoutX()-30/d);		
+//	    missingHealth.setLayoutX(posx-centerX-missingHealth.getWidth());		
 		
 		if (health <1) {
 			this.removeEntity(); 
