@@ -27,7 +27,8 @@ public class GameProgram {
 	public static boolean gameRunning = true; 
 	private static int score = 0; 
 	private int secondCounter = 0; 
-	private int botSpawnCounter = 0; 
+	private double botSpawnCounter = 0; 
+	private double spawnScale = 1; 
 	
 	Text currentScore = new Text(score+"");
 
@@ -111,7 +112,8 @@ public class GameProgram {
 	}
 
 	private void spawnRanged() {
-		if(botSpawnCounter >9) {
+		if(botSpawnCounter >9*spawnScale) {
+			spawnScale = spawnScale-0.1;
 			Random random = new Random(); 
 			int sizeX = random.nextInt((int)ProjectMain.mainlayout.getWidth()); 
 			int sizeY = random.nextInt((int)ProjectMain.mainlayout.getHeight()); 
