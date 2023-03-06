@@ -25,6 +25,17 @@ public class ProjectMain extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	/*
+	 * TODO LIST 
+	 * Player kan gå in i lava
+	 * Enemies kan inte spawna på eller i närheten av spelare
+	 * Enemies kan inte gå in i spelare, det får spelaren att sitta fast. 
+	 * enemies kan inte gå in i pelare eller hinder 
+	 * Läs in highscore från filen och spara om filen med nya värden. 
+	 * Gör spelet skalbart, kanske göra om alla positioner för menu och hinder osv som ett bråktal av ProjectMain.mainlayout.getWidth()
+	 * Powerups... 
+	 * ev massa visuellt fix, menyn och spelet kan ju bli lite roligare
+	 */
 
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Projekt TDDE10");
