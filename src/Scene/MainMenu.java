@@ -3,6 +3,11 @@
  */
 package Scene;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import GamePackage.GameProgram;
 import GamePackage.ProjectMain;
 import javafx.scene.canvas.Canvas;
@@ -30,19 +35,23 @@ public class MainMenu extends Canvas {
 	private GraphicsContext gc =  this.getGraphicsContext2D();
 	private GameProgram g;
 	private Pane pane = new Pane(); 
+	
+	private ArrayList<String> highscores = new ArrayList<>();
+	
+	
 	public MainMenu() {
 		pane.setPrefSize(ProjectMain.mainlayout.getWidth(),ProjectMain.mainlayout.getHeight());
 		ProjectMain.mainlayout.setStyle("-fx-background-color: black;");
 		ProjectMain.mainlayout.setCenter(pane);
 		mainMenu();
-		gameText(); 
-		highScoreTable();
+		
 	}
 	public MainMenu(String s) { // String constructor for gameOver menu
 		pane.setPrefSize(ProjectMain.mainlayout.getWidth(),ProjectMain.mainlayout.getHeight());
 		ProjectMain.mainlayout.setStyle("-fx-background-color: black;");
 		ProjectMain.mainlayout.setCenter(pane);
 		gameOverMenu(); 
+		
 	}
 	
 	private void gameText() {
@@ -68,7 +77,7 @@ public class MainMenu extends Canvas {
 		table.setFill(Color.GREY);
 		table.setStroke(Color.LIGHTGRAY);
 		pane.getChildren().add(table); 
-		Text highscore = newLetter("Highscores",Color.BLACK, Color.GREY, posX-2, posY+50);
+		newLetter("Highscores",Color.BLACK, Color.GREY, posX-2, posY+50);
 		Line line = new Line(posX,posY+70,posX+250,posY+70);		
 		pane.getChildren().add(line);
 		
@@ -76,50 +85,62 @@ public class MainMenu extends Canvas {
 		Text easymap = newLetter("Easy Map:", Color.BLACK,null, posX, posY+90); 		
 		easymap.setFont(Font.font("Verdana", FontWeight.LIGHT, 15));
 		
-		//1
-		Text eone = newLetter("1-", Color.BLACK,null,15, posX, posY+110); 		
-		Text easyone = newLetter("No entry", Color.BLACK,null,15,posX+20, posY+110);
+		//load from file
+		File highscorefile = new File("src/Scene/highscores.txt"); 
 		
-		//2
-		Text etwo = newLetter("2-", Color.BLACK,null, 15,posX, posY+142.5); 		
-		Text easytwo = newLetter("No entry", Color.BLACK,null,15,posX+20, posY+142.5);
-		//3 
-		Text ethree = newLetter("3-", Color.BLACK,null, 15,posX, posY+175); 		
-		Text easythree = newLetter("No entry", Color.BLACK,null,15,posX+20, posY+175);
 		
-		//4
-		Text efour = newLetter("4-", Color.BLACK,null,15, posX, posY+207.5); 		
-		Text easyfour = newLetter("No entry", Color.BLACK,null,15,posX+20, posY+207.5);
+		int posToAddOn = 0; 
+
+		try {
+			Scanner sc = new Scanner(highscorefile);
+			while(sc.hasNextLine()) {
+				String aline = sc.nextLine();
+				if (aline.equals("Easy Map")) {
+					//Do nothing on this line
+				}
+				else if (aline.equals("Hard Map")||aline.equals("")) {
+					while (posToAddOn != 5) {
+						highscores.add("Nothing recorded.");
+						posToAddOn++;
+					}	
+				}
+				else {
+					highscores.add(aline);
+					posToAddOn++;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} 
 		
-		//5 
-		Text efive = newLetter("5-", Color.BLACK,null,15, posX, posY+240); 		
-		Text easyfive = newLetter("No entry", Color.BLACK,null,15,posX+20, posY+240);
+		while(posToAddOn != 10) {
+			highscores.add("Nothing recorded."); 
+			posToAddOn++;
+		}
 		
+		
+		
+		
+		double extraspace = 0; 
+		int num = 1;
+		
+		for (int i = 1; i<=10; i++) {
+			
+			newLetter(num+"-",Color.BLACK,null,15, posX, posY+77.5+i*32.5+extraspace);
+			newLetter(highscores.get(i-1),Color.BLACK,null,15, posX+20, posY+77.5+i*32.5+extraspace);
+			num++;
+			if (num>5) {
+				extraspace = 17.5;
+				num = 1; 
+			}
+		}
 		Line line2 = new Line(posX,posY+250, posX+250, posY+250); 
 		pane.getChildren().add(line2);
 		//HARDMAP
-		
-		
 		Text hardmap = newLetter("Hard Map:",Color.BLACK,null, posX,posY+270); 
 		hardmap.setFont(Font.font("Verdana", FontWeight.LIGHT, 15));
 		
-		posY = posY +270-90;
 		
-		//1
-		Text hone = newLetter("1-", Color.BLACK,null, 15,posX, posY+110); 		
-		Text hardone = newLetter("No entry", Color.BLACK,null,15,posX+20, posY+110);
-		//2
-		Text htwo = newLetter("2-", Color.BLACK,null,15, posX, posY+142.5); 		
-		Text hardtwo = newLetter("No entry", Color.BLACK,null,15,posX+20, posY+142.5);
-		//3
-		Text hthree = newLetter("3-", Color.BLACK,null,15, posX, posY+175); 		
-		Text hardthree = newLetter("No entry", Color.BLACK,null,15,posX+20, posY+175);
-		//4
-		Text hfour = newLetter("4-", Color.BLACK,null,15, posX, posY+207.5); 		
-		Text hardfour = newLetter("No entry", Color.BLACK,null,15,posX+20, posY+207.5);
-		//5
-		Text hfive = newLetter("5-", Color.BLACK,null,15, posX, posY+240); 		
-		Text hardfive = newLetter("No entry", Color.BLACK,null,15,posX+20, posY+240);		
 	}
 	private Text newLetter(String texttext, Color f, Color s, double x, double y) {
 		Text t = newLetter(texttext, f, s, 46, x, y);

@@ -1,0 +1,7 @@
+Easy Map
+Viktor -1021
+OscarTheLooser -3
+
+Hard Map
+Viktor - 1220^3
+Oscar - inf

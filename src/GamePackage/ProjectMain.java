@@ -31,7 +31,8 @@ public class ProjectMain extends Application {
 	 * Enemies kan inte spawna på eller i närheten av spelare
 	 * Enemies kan inte gå in i spelare, det får spelaren att sitta fast. 
 	 * enemies kan inte gå in i pelare eller hinder 
-	 * Läs in highscore från filen och spara om filen med nya värden. 
+	 * Läs in highscore från filen och spara om filen med nya värden. /// LÄS IN KLAR, structurera upp sparandet av filen rätt. 
+	 * Enter name vid game over
 	 * Gör spelet skalbart, kanske göra om alla positioner för menu och hinder osv som ett bråktal av ProjectMain.mainlayout.getWidth()
 	 * Powerups... 
 	 * ev massa visuellt fix, menyn och spelet kan ju bli lite roligare
