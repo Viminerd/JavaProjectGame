@@ -14,6 +14,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -35,6 +36,7 @@ public class MainMenu extends Canvas {
 	private GraphicsContext gc =  this.getGraphicsContext2D();
 	private GameProgram g;
 	private Pane pane = new Pane(); 
+	private String name = ""; 
 	
 	private ArrayList<String> highscores = new ArrayList<>();
 	
@@ -192,13 +194,40 @@ public class MainMenu extends Canvas {
 			Rectangle entername = new Rectangle(savescore.getLayoutX(), savescore.getLayoutY(),90,20);
 			entername.setFill(Color.GRAY);
 			pane.getChildren().add(entername); 
-			newLetter("Enter name", Color.BLACK, null, 12, savescore.getLayoutX()+10,savescore.getLayoutY()+14);
+			Text enternametext = newLetter("Enter name", Color.BLACK, null, 12, savescore.getLayoutX()+10,savescore.getLayoutY()+14);
 			Button enter = new Button("Enter"); 
 			setPos(enter, 610,200);
 			pane.getChildren().add(enter);
+			
+			
+			entername.setOnMouseClicked(event2->{
+				enternametext.setText(name); 
+				
+				entername.setOnKeyPressed(ee->{
+					if (ee.getCode() == KeyCode.BACK_SPACE && name.length()>0) {
+						name = name.substring(0, name.length() - 1);
+					}
+					if (name.length()<10) {
+						if(ee.isShiftDown()) {
+							name = name + ee.getText().toUpperCase();
+							enternametext.setText(name);
+						
+						}
+						else {						
+							name = name + ee.getText();
+							enternametext.setText(name);
+						}
+					}
+					
+				});
+				entername.requestFocus();
+
+			});
+			enternametext.setOnMouseClicked(entername.getOnMouseClicked());
 			enter.setOnMouseClicked(e->{
 				System.out.println("Save to txt-file");
-				enter.setOnMouseClicked(null); //cant save twice
+				mainMenu(); 
+				
 			});
 
 			
