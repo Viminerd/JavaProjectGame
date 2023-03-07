@@ -1,7 +1,13 @@
 Easy Map
-Viktor -1021
-OscarTheLooser -3
+OscarTheGamer  10e20
+TrashViktor - 9
+
 
 Hard Map
+<<<<<<< HEAD
 Viktor - 1220^3
 Oscar - inf 
+=======
+Oscar - NaN
+HardViktor ;) - 1220e1
+>>>>>>> 9011b66976a7609bc65bdb6aa5a7235899dc11dd
