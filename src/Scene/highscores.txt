@@ -1,7 +1,8 @@
 Easy Map
-Viktor -1021
-OscarTheLooser -3
+OscarTheGamer  10e20
+TrashViktor - 9
+
 
 Hard Map
-Viktor - 1220^3
-Oscar - inf
+Oscar - NaN
+HardViktor ;) - 1220e1
