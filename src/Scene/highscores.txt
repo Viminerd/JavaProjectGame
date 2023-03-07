@@ -4,4 +4,4 @@ OscarTheLooser -3
 
 Hard Map
 Viktor - 1220^3
-Oscar - inf
+Oscar - inf 
