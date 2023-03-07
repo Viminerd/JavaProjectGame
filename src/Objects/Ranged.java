@@ -37,6 +37,7 @@ public class Ranged extends Enemy {
 	private int shootDelay = 0; 
 	private Rectangle healthBar;
 	private Rectangle missingHealth; 
+	private double maxHealth;
 	
 	private double centerX; 
 	private double centerY; 
@@ -45,6 +46,7 @@ public class Ranged extends Enemy {
 	public Ranged(double posx, double posy, Player p) {
 		super(posx, posy, 100,p);
 		
+		maxHealth=health;
 		shootDelay = -40; //Wait a bit after spawn to start shooting
 		centerX = posx;
 		centerY = posy; 
@@ -124,7 +126,7 @@ public class Ranged extends Enemy {
 	public void damage(double d) {
 		health -= d; 
 		healthBar.setFill(Color.GREEN);
-		missingHealth.setWidth(missingHealth.getWidth()+(30/10)*d/10); //Blir noll med 30/100*d och inte detta??	
+		missingHealth.setWidth(missingHealth.getWidth()+(30/maxHealth)*d); //Blir noll med 30/100*d och inte detta??	
 		
 		if (health <1) {
 			this.removeEntity(); 

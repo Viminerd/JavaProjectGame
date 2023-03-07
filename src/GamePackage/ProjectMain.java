@@ -36,6 +36,10 @@ public class ProjectMain extends Application {
 	 * Gör spelet skalbart, kanske göra om alla positioner för menu och hinder osv som ett bråktal av ProjectMain.mainlayout.getWidth()
 	 * Powerups... 
 	 * ev massa visuellt fix, menyn och spelet kan ju bli lite roligare
+	 * Fixa melee fiende DONE
+	 * Implemetera powerups
+	 * Spawna powerups
+	 * Skala om så EasyMap har rätt skala
 	 */
 
 	public void start(Stage primaryStage) throws Exception {

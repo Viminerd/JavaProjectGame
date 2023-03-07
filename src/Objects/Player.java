@@ -176,7 +176,6 @@ public class Player extends Character {
 	}
 
 	private void shoot(double x, double y) {
-		System.out.println("Pew Pew");
 
 		Point2D point1 = new Point2D(getPosx() + 15, getPosy());
 		Point2D point2 = new Point2D(x, y);

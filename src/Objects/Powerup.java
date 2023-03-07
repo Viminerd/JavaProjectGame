@@ -18,11 +18,6 @@ public class Powerup extends Entity {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	protected void setShape() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void moveMe() {

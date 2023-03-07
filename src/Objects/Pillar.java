@@ -36,11 +36,6 @@ public class Pillar extends Entity {
 		GameProgram.entityList.add(this); 
 	}
 
-	@Override
-	protected void setShape() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void moveMe() {
