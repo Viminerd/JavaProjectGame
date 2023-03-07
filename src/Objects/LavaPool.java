@@ -35,11 +35,6 @@ public class LavaPool extends Entity {
 		ProjectMain.mainlayout.getChildren().add(hitBox);
 	}
 
-	@Override
-	protected void setShape() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void moveMe() {
