@@ -30,14 +30,15 @@ public class Player extends Character {
 	private Shape aimRay;
 	private double aimx;
 	private double aimy;
-	private Rectangle healthBar; 
-	private Rectangle missingHealthBar; 
+	private Rectangle healthBar;
+	private Rectangle missingHealthBar;
 	private double healthScale;
 	private double maxHealth;
+	private boolean invincible;
 
 	public Player(double posx, double posy, int health) {
 		super(posx, posy, health);
-		maxHealth=health;
+		maxHealth = health;
 		moveSpeed = 3;
 		hitBox = new Circle(posx, posy, 15);
 		hitBox.setLayoutX(posx);
@@ -45,16 +46,14 @@ public class Player extends Character {
 		hitBox.setFill(Color.RED);
 		hitBox.setStroke(Color.GREEN);
 		addEntity();
-		
-		
-		healthBar = new Rectangle(posx -10, posy-17, 70 , 10);
+
+		healthBar = new Rectangle(posx - 10, posy - 17, 70, 10);
 		healthBar.setFill(Color.GREEN);
 		ProjectMain.mainlayout.getChildren().add(healthBar);
-		
 
-		missingHealthBar = new Rectangle(posx, posy-7,0,10);
+		missingHealthBar = new Rectangle(posx, posy - 7, 0, 10);
 		missingHealthBar.setFill(Color.RED);
-		missingHealthBar.getTransforms().add(new Rotate(180,missingHealthBar.getX(),missingHealthBar.getY()));
+		missingHealthBar.getTransforms().add(new Rotate(180, missingHealthBar.getX(), missingHealthBar.getY()));
 		ProjectMain.mainlayout.getChildren().add(missingHealthBar);
 
 		ProjectMain.mainScene.setOnKeyPressed(e -> {
@@ -79,7 +78,7 @@ public class Player extends Character {
 
 		// Dessa måste ligga i en move-funktion för att inte kunna användas när spelet
 		// är pausat.
-		
+
 		ProjectMain.mainScene.setOnKeyReleased(e -> {
 			switch (e.getCode()) {
 			case W:
@@ -111,16 +110,16 @@ public class Player extends Character {
 				aim(e.getX(), e.getY());
 				secondaryMousePressed = true;
 			}
-			if (e.isPrimaryButtonDown()&& GameProgram.gameRunning) {
+			if (e.isPrimaryButtonDown() && GameProgram.gameRunning) {
 				primaryMousePressed = true;
 			}
 		});
 		ProjectMain.mainScene.setOnMousePressed(e -> {
-			if (e.isSecondaryButtonDown()&& GameProgram.gameRunning) {
+			if (e.isSecondaryButtonDown() && GameProgram.gameRunning) {
 				aim(e.getX(), e.getY());
 				secondaryMousePressed = true;
 			}
-			if (e.isPrimaryButtonDown()&& GameProgram.gameRunning) {
+			if (e.isPrimaryButtonDown() && GameProgram.gameRunning) {
 				primaryMousePressed = true;
 				shoot(e.getX(), e.getY());
 			}
@@ -130,7 +129,7 @@ public class Player extends Character {
 				secondaryMousePressed = false;
 				ProjectMain.mainlayout.getChildren().remove(aimRay);
 			}
-			if (e.isPrimaryButtonDown() == false&& GameProgram.gameRunning ) {
+			if (e.isPrimaryButtonDown() == false && GameProgram.gameRunning) {
 				primaryMousePressed = false;
 			}
 		});
@@ -203,37 +202,34 @@ public class Player extends Character {
 	}
 
 	@Override
-	protected void setShape() {
-	}
-
-	@Override
 	public void moveMe() {
 		move(newX, newY);
 	}
-	
+
 	private void updateHealthBar() {
-		healthScale = health/maxHealth;
-		healthBar.setLayoutX(posx+8-35);
-		healthBar.setLayoutY(posy-17);
+		healthScale = health / maxHealth;
+		healthBar.setLayoutX(posx + 8 - 35);
+		healthBar.setLayoutY(posy - 17);
 
 		healthBar.setFill(Color.GREEN);
 
-		missingHealthBar.setWidth(70*(1-healthScale));
-		missingHealthBar.setLayoutX(posx+35);
-		missingHealthBar.setLayoutY(posy-17);
+		missingHealthBar.setWidth(70 * (1 - healthScale));
+		missingHealthBar.setLayoutX(posx + 35);
+		missingHealthBar.setLayoutY(posy - 17);
 		missingHealthBar.setFill(Color.RED);
 	}
 
 	@Override
 	public void damage(double damage) {
-		health -= damage;
-		if (health < 1) {
-			System.out.println("Player dead");
-			missingHealthBar.setWidth(72);
-			GameProgram.gameRunning = false;
-			MainMenu.gameOver(); 
+		if (GameProgram.invincibleTime<=0) {
+			health -= damage;
+			if (health < 1) {
+				System.out.println("Player dead");
+				missingHealthBar.setWidth(72);
+				GameProgram.gameRunning = false;
+				MainMenu.gameOver();
+			}
 		}
-
 	}
 
 }

@@ -56,12 +56,6 @@ public class Melee extends Enemy {
 	}
 
 	@Override
-	public void doAction() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void move() {
 		double moveSpeed = 1;
 		boolean hitsAWallX = false;
@@ -123,11 +117,7 @@ public class Melee extends Enemy {
 
 	}
 
-	@Override
-	protected void setShape() {
-		// TODO Auto-generated method stub
 
-	}
 
 	@Override
 	public void moveMe() {

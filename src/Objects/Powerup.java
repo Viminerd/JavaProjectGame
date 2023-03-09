@@ -5,24 +5,22 @@ package Objects;
 
 /**
  * @author osclo923
- *
+ *	Basic powerup class, consist of a nonmoving object on screen with a hitbox.
  */
-public class Powerup extends Entity {
+public abstract class Powerup extends Entity {
 
 	/**
 	 * @param posx
 	 * @param posy
 	 */
-	public Powerup(double posx, double posy) {
+	protected Player target; 
+	public Powerup(double posx, double posy, Player p) {
 		super(posx, posy);
-		// TODO Auto-generated constructor stub
+		target=p;
 	}
 
 
 	@Override
-	public void moveMe() {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void moveMe();
 
 }

@@ -25,6 +25,7 @@ public abstract class Entity extends Canvas {
 	protected double posx;
 	protected double posy;
 	
+	
 
 	public Entity(double posx, double posy) {
 		this.posx = posx;

@@ -19,10 +19,8 @@ public abstract class Enemy extends Character {
 	public Enemy(double posx, double posy, int health, Player p) {
 		super(posx, posy, health);
 		target = p; 
-		// TODO Auto-generated constructor stub
 	}
 	
-	public abstract void doAction(); 
 	public abstract void move(); 
 	
 	protected void rotateTo(Player p) {

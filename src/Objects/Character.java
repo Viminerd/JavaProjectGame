@@ -23,8 +23,5 @@ public abstract class Character extends Entity {
 	}
 
 
-	protected abstract void setShape();
-
-
 
 }
