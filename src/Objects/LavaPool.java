@@ -24,15 +24,12 @@ public class LavaPool extends Entity {
 	private double radie; 
 	public LavaPool(double posx, double posy, double radie) {
 		super(posx, posy);
-		this.radie = radie; 
-		
-		GameProgram.entityList.add(this); 
-		
+		this.radie = radie; 		
 		
 		hitBox = new Rectangle(posx, posx+30, posy, posy+30);
 		hitBox.setFill(Color.ORANGE);
 		hitBox.setStroke(Color.RED);
-		ProjectMain.mainlayout.getChildren().add(hitBox);
+		addEntity();
 	}
 
 

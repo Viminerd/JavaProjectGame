@@ -35,7 +35,6 @@ public class InvinciblePowerUp extends Powerup {
 
 		hitBox = hitBoxTemp;
 		hitBox.setFill(Color.YELLOW);
-		GameProgram.invincibleTime = 7*1000/16; //för sekunder
 		addEntity();
 
 	}
@@ -43,19 +42,18 @@ public class InvinciblePowerUp extends Powerup {
 	@Override
 	public void moveMe() {// kommer inte röra sig men används för att uppdatera
 
-		for (Entity entity : GameProgram.entityList) {
-			if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent()) && entity == target) {
-				doCommand();
-				break;
-			}//TODO;den intersectar alltid en hitbox som inte är player, hur????
-		}
+//		for (Entity entity : GameProgram.entityList) {
+//			if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent()) && entity == target) {
+//				doCommand();
+//				break;
+//			}//TODO;den intersectar alltid en hitbox som inte är player, hur????
+//		}
 
 	}
-
-	private void doCommand() {
-		System.out.println("Powerupp!");
-		GameProgram.invincibleTime = 7;
-		ProjectMain.mainlayout.getChildren().remove(hitBox);
+	@Override
+	public void doCommand() {
+		GameProgram.invincibleTime = 7*1000/16;
+		removeEntity();
 	}
 
 }

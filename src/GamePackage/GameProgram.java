@@ -8,6 +8,7 @@ import Objects.InvinciblePowerUp;
 import Objects.Melee;
 import Objects.Player;
 import Objects.Ranged;
+import Objects.ShootPowerUp;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.Button;
@@ -30,7 +31,8 @@ public class GameProgram {
 	private int secondCounter = 0;
 	private double botSpawnCounter = 0;
 	private double spawnScale = 1;
-	public static long invincibleTime;
+	public static long invincibleTime = 0;
+	public static long shootPowerUp = 0;
 
 	Text currentScore = new Text(score + "");
 
@@ -76,10 +78,18 @@ public class GameProgram {
 				}
 
 				secondCounter += 16;
-
+				player.getHitBox().setStroke(Color.BLACK); 
 				if (invincibleTime != 0) {
+					player.getHitBox().setStroke(Color.GOLD); 
 					invincibleTime -= 1;
-//					System.out.println("invincibleTimer = " + invincibleTime); //TEMP
+				}
+				if (shootPowerUp != 0) {
+					player.getHitBox().setStroke(Color.BLUE); 
+					player.shootPowerUp = true; 
+					shootPowerUp -= 1;
+				}
+				else {
+					player.shootPowerUp = false; 
 				}
 
 			} else {
@@ -94,7 +104,7 @@ public class GameProgram {
 //		new Ranged(500, 300, player);
 //		new Melee(600, 200, player);
 		new InvinciblePowerUp(300, 200, player); // TEMP
-
+		new ShootPowerUp(300,300,player); 
 		// SCORE
 		Rectangle scoreHolder = new Rectangle(40, 0, 50, 20);
 		scoreHolder.setFill(Color.GREY);
@@ -125,10 +135,16 @@ public class GameProgram {
 			Random random = new Random();
 			int sizeX = random.nextInt((int) ProjectMain.mainlayout.getWidth());
 			int sizeY = random.nextInt((int) ProjectMain.mainlayout.getHeight());
-			new Ranged(sizeX, sizeY, player);
+			Ranged r = new Ranged(sizeX, sizeY, player);
 			botSpawnCounter = 0;
-
+			for (Entity e : entityList) {
+				if (r.getHitBox().getBoundsInParent().intersects(e.getBoundsInParent())) {
+					r.removeEntity();
+					spawnRanged(); 
+				}
+			}
 			spawnMelee();
+			
 		}
 
 	}

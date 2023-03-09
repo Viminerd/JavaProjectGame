@@ -74,10 +74,10 @@ public class Melee extends Enemy {
 			posyTemp = posy + moveSpeed;
 		}
 		
-		hitBox.setLayoutX(posxTemp - centerX);
+		hitBox.setLayoutX(posxTemp - centerX);		
 		for (Entity entity : GameProgram.entityList) {
 			if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent())
-					&& entity.getHitBox() != hitBox) {
+					&& entity.getHitBox() != hitBox && entity instanceof Powerup == false) {
 				hitsAWallX = true;
 				break;
 			}
@@ -86,7 +86,7 @@ public class Melee extends Enemy {
 		hitBox.setLayoutY(posyTemp-centerY);
 		for (Entity entity : GameProgram.entityList) {
 			if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent())
-					&& entity.getHitBox() != hitBox) {
+					&& entity.getHitBox() != hitBox && entity instanceof Powerup == false) {
 				hitsAWallY = true;
 				break;
 			}

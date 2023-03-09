@@ -7,9 +7,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -53,7 +55,7 @@ public class MainMenu extends Canvas {
 		mainMenu();
 		
 	}
-	public MainMenu(String s) { // String constructor for gameOver menu
+	public MainMenu(String s) { // String in constructor for gameOver menu
 		pane.setPrefSize(ProjectMain.mainlayout.getWidth(),ProjectMain.mainlayout.getHeight());
 		ProjectMain.mainlayout.setStyle("-fx-background-color: black;");
 		ProjectMain.mainlayout.setCenter(pane);
@@ -92,18 +94,12 @@ public class MainMenu extends Canvas {
 		easymap.setFont(Font.font("Verdana", FontWeight.LIGHT, 15));
 		
 		//load from file
-		File highscorefile = new File("src/Scene/highscores.txt"); 
-		
-
-		int posToAddOn = 0; 
-
+		highscores.clear();
 		try {
-		    FileInputStream inputStream = new FileInputStream("src/Scene/highscores.txt");
-		    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-			//Scanner sc = new Scanner(highscorefile);
+			 BufferedReader reader = new BufferedReader(new FileReader("src/Scene/highscores.txt"));
+
 		    String aline;
 			while((aline = reader.readLine()) != null) {
-				
 				if (aline.equals("Easy Map")||aline.equals("Hard Map")) {
 					//Do nothing on this line
 				}
@@ -120,7 +116,6 @@ public class MainMenu extends Canvas {
 		int num = 1;
 		
 		for (int i = 1; i<=10; i++) {
-			
 			newLetter(num+"-",Color.BLACK,null,15, posX, posY+77.5+i*32.5+extraspace);
 			newLetter(highscores.get(i-1),Color.BLACK,null,15, posX+20, posY+77.5+i*32.5+extraspace);
 			num++;
@@ -137,10 +132,12 @@ public class MainMenu extends Canvas {
 		
 		
 	}
+	
 	private Text newLetter(String texttext, Color f, Color s, double x, double y) {
 		Text t = newLetter(texttext, f, s, 46, x, y);
 		return t; 
 	}
+	
 	private Text newLetter(String texttext, Color f, Color s, double fontsize, double x, double y) {
 		Text text = new Text(texttext); 
 		text.setLayoutX(x);
@@ -152,7 +149,6 @@ public class MainMenu extends Canvas {
 		pane.getChildren().add(text);
 		return text; 
 	}
-	
 	
 	private void mainMenu() {
 		pane.getChildren().clear(); 
@@ -170,19 +166,20 @@ public class MainMenu extends Canvas {
 	private void gameOverMenu() {
 		pane.getChildren().clear();
 		Canvas c = new Canvas(200,50);
-		c.setLayoutX(500);
+		c.setLayoutX(450);
 		c.setLayoutY(100);
 		GraphicsContext g = c.getGraphicsContext2D();
 		g.setFill(null);	
 		g.fillRect(0, 0, c.getWidth(), c.getHeight());
 		g.setFill(Color.ORANGERED);
-		g.fillText("You Died", 10, 25, 300);
+		g.setFont(Font.font("Verdana", FontWeight.MEDIUM, 35));
+		g.fillText("You Died", 0, 25, 250);
+		
 		
 		Button savescore = new Button("Save score");
 		setPos(savescore, 500, 200); 
 		
 		savescore.setOnMouseClicked(event->{
-			System.out.println(GameProgram.getScore());
 			pane.getChildren().remove(savescore); 
 			Rectangle entername = new Rectangle(savescore.getLayoutX(), savescore.getLayoutY(),90,20);
 			entername.setFill(Color.GRAY);
@@ -212,7 +209,6 @@ public class MainMenu extends Canvas {
 			entername.requestFocus();
 
 			enter.setOnMouseClicked(e->{
-				System.out.println("Save to txt-file");
 				updateHighscores(name, GameProgram.getScore()); 
 				mainMenu(); 
 				
@@ -232,6 +228,7 @@ public class MainMenu extends Canvas {
 			mainMenu(); 
 		});
 	}
+	
 	private void chooseDifficulty() {
 		pane.getChildren().clear();
 		gameText();
@@ -302,7 +299,6 @@ public class MainMenu extends Canvas {
 				if (startComparison && aline.indexOf('-') != -1) {
 					int linescore = Integer.valueOf(aline.substring(aline.indexOf('-')+2,aline.length())); 
 					if (Integer.valueOf(test.substring(test.indexOf('-')+2,test.length())) > linescore) {
-						System.out.println("SHOULD ADD THIS");
 						listToSaveAsTxt.add(test);
 						test = aline;
 					}
@@ -322,14 +318,14 @@ public class MainMenu extends Canvas {
 	            	writer.write(s+System.lineSeparator()); 
 	            }
 	            writer.flush();
-	            writer.close();
+	            writer.close(); 
 	        } catch (IOException e) {
 	            System.out.println("An error occurred while clearing and writing the file: " + e.getMessage());
 	        }
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+		highscorefile = null; 
 	}
 
 }

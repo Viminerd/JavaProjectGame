@@ -3,6 +3,10 @@
  */
 package Objects;
 
+import GamePackage.GameProgram;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
+
 /**
  * @author osclo923
  *
@@ -15,13 +19,21 @@ public class ShootPowerUp extends Powerup {
 	 */
 	public ShootPowerUp(double posx, double posy, Player p) {
 		super(posx, posy, p);
-
+		hitBox = new Ellipse(posx,posy,10,10);
+		hitBox.setFill(Color.BROWN);
 		addEntity();
 	}
 
 	@Override
 	public void moveMe() {
-		// TODO Auto-generated method stub
+		
+		
+	}
+
+	@Override
+	public void doCommand() {
+		GameProgram.shootPowerUp = 5*1000/16; 
+		removeEntity();
 		
 	}
 

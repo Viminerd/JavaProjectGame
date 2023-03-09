@@ -22,5 +22,7 @@ public abstract class Powerup extends Entity {
 
 	@Override
 	public abstract void moveMe();
+	
+	public abstract void doCommand(); 
 
 }

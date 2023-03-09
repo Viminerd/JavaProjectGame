@@ -3,6 +3,7 @@
  */
 package Scene;
 
+import GamePackage.ProjectMain;
 import Objects.LavaPool;
 import Objects.Pillar;
 import javafx.scene.canvas.Canvas;
@@ -16,18 +17,18 @@ import javafx.scene.canvas.GraphicsContext;
 public class EasyMap extends GameScene {
 
 	public EasyMap() {
-		sizeX = 1200; 
-		sizeY = 600; 
+		sizeX = ProjectMain.mainlayout.getWidth();
+		sizeY = ProjectMain.mainlayout.getHeight(); 
 		
-		double x = 200; 
-		double y = 100; 
-		double r = 40;
+		double x = 100; 
+		double y = 70; 
+		double r = 30;
 		for (int i = 0; i<3;i++) {
 			objectList.add(new Pillar(x+200*i, y, r)); 
-			objectList.add(new Pillar(x+200*i, y+300, r)); 
+			objectList.add(new Pillar(x+200*i, y+130, r)); 
 		}
-		for (int i = 0; i<8; i++) {
-			objectList.add(new Pillar(x+200, y+37.5*i, r));			
+		for (int i = 0; i<4; i++) {
+			objectList.add(new Pillar(x+200, y+32*i, r));			
 		}
 		
 		

@@ -34,7 +34,7 @@ public class Player extends Character {
 	private Rectangle missingHealthBar;
 	private double healthScale;
 	private double maxHealth;
-	private boolean invincible;
+	public static boolean shootPowerUp = false; 
 
 	public Player(double posx, double posy, int health) {
 		super(posx, posy, health);
@@ -149,8 +149,14 @@ public class Player extends Character {
 			for (Entity entity : GameProgram.entityList) {
 				if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent())
 						&& entity.getHitBox() != hitBox) {
-					hitsAWallX = true;
-					break;
+					if(entity instanceof Powerup) {
+						((Powerup) entity).doCommand(); 
+						break; 
+					}
+					else if (entity instanceof LavaPool == false){
+						hitsAWallX = true;
+						break;
+					}
 				}
 			}
 			hitBox.setLayoutX(posx);
@@ -159,8 +165,14 @@ public class Player extends Character {
 			for (Entity entity : GameProgram.entityList) {
 				if (hitBox.getBoundsInParent().intersects(entity.getHitBox().getBoundsInParent())
 						&& entity.getHitBox() != hitBox) {
+					if(entity instanceof Powerup) {
+						((Powerup) entity).doCommand(); 
+						break; 
+					}
+					else if (entity instanceof LavaPool == false){
 					hitsAWallY = true;
 					break;
+					}
 				}
 			}
 			hitBox.setLayoutY(posy);
@@ -181,8 +193,11 @@ public class Player extends Character {
 		Point2D vector = point2.subtract(point1);
 		double angleRad = Math.atan2(vector.getY(), vector.getX());
 		double angle = Math.toDegrees(angleRad);
-		new FriendlyBullet(posx, posy, angle, 20); // ändra rotation här "0", till vinkeln baserad på eventX och eventY.
-													// Ex i ranged.
+		new FriendlyBullet(posx, posy, angle, 20);
+		if (shootPowerUp) {
+			new FriendlyBullet(posx,posy, angle+3, 20); 
+			new FriendlyBullet(posx,posy, angle-3, 20); 
+		}
 
 	}
 
@@ -224,7 +239,6 @@ public class Player extends Character {
 		if (GameProgram.invincibleTime<=0) {
 			health -= damage;
 			if (health < 1) {
-				System.out.println("Player dead");
 				missingHealthBar.setWidth(72);
 				GameProgram.gameRunning = false;
 				MainMenu.gameOver();
