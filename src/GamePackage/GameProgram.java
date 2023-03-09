@@ -19,7 +19,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class GameProgram {
-	private String difficulty;
+	private static String difficulty;
 	private Timeline timeline = null;
 	public static ArrayList<Entity> entityList = new ArrayList<>();
 	public static ArrayList<Entity> tempList = new ArrayList<>(); 
@@ -206,5 +206,8 @@ public class GameProgram {
 	
 	public static int getScore() {
 		return score; 
+	}
+	public static String getDiff() {
+		return difficulty; 
 	}
 }

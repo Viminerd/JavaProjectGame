@@ -3,8 +3,13 @@
  */
 package Scene;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -83,46 +88,34 @@ public class MainMenu extends Canvas {
 		Line line = new Line(posX,posY+70,posX+250,posY+70);		
 		pane.getChildren().add(line);
 		
-		//Structure of table
 		Text easymap = newLetter("Easy Map:", Color.BLACK,null, posX, posY+90); 		
 		easymap.setFont(Font.font("Verdana", FontWeight.LIGHT, 15));
 		
 		//load from file
 		File highscorefile = new File("src/Scene/highscores.txt"); 
 		
-		
+
 		int posToAddOn = 0; 
 
 		try {
-			Scanner sc = new Scanner(highscorefile);
-			while(sc.hasNextLine()) {
-				String aline = sc.nextLine();
-				if (aline.equals("Easy Map")) {
+		    FileInputStream inputStream = new FileInputStream("src/Scene/highscores.txt");
+		    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+			//Scanner sc = new Scanner(highscorefile);
+		    String aline;
+			while((aline = reader.readLine()) != null) {
+				
+				if (aline.equals("Easy Map")||aline.equals("Hard Map")) {
 					//Do nothing on this line
-				}
-				else if (aline.equals("Hard Map")||aline.equals("")) {
-					while (posToAddOn != 5) {
-						highscores.add("Nothing recorded.");
-						posToAddOn++;
-					}	
 				}
 				else {
 					highscores.add(aline);
-					posToAddOn++;
 				}
 			}
-		} catch (FileNotFoundException e) {
+			reader.close();
+		} catch (IOException e) {
 			e.printStackTrace();
 		} 
-		
-		while(posToAddOn != 10) {
-			highscores.add("Nothing recorded."); 
-			posToAddOn++;
-		}
-		
-		
-		
-		
+			
 		double extraspace = 0; 
 		int num = 1;
 		
@@ -199,33 +192,28 @@ public class MainMenu extends Canvas {
 			setPos(enter, 610,200);
 			pane.getChildren().add(enter);
 			
-			
-			entername.setOnMouseClicked(event2->{
-				enternametext.setText(name); 
-				
-				entername.setOnKeyPressed(ee->{
-					if (ee.getCode() == KeyCode.BACK_SPACE && name.length()>0) {
-						name = name.substring(0, name.length() - 1);
-					}
-					if (name.length()<10) {
-						if(ee.isShiftDown()) {
-							name = name + ee.getText().toUpperCase();
-							enternametext.setText(name);
-						
-						}
-						else {						
-							name = name + ee.getText();
-							enternametext.setText(name);
-						}
-					}
+			entername.setOnKeyPressed(ee->{
+				if (ee.getCode() == KeyCode.BACK_SPACE && name.length()>0) {
+					name = name.substring(0, name.length() - 1);
+				}
+				if (name.length()<10) {
+					if(ee.isShiftDown()) {
+						name = name + ee.getText().toUpperCase();
+						enternametext.setText(name);
 					
-				});
-				entername.requestFocus();
-
+					}
+					else {						
+						name = name + ee.getText();
+						enternametext.setText(name);
+					}
+				}
+				
 			});
-			enternametext.setOnMouseClicked(entername.getOnMouseClicked());
+			entername.requestFocus();
+
 			enter.setOnMouseClicked(e->{
 				System.out.println("Save to txt-file");
+				updateHighscores(name, GameProgram.getScore()); 
 				mainMenu(); 
 				
 			});
@@ -289,6 +277,59 @@ public class MainMenu extends Canvas {
 	private void setPos(Button b, double x, double y) {
 		b.setLayoutX(x);
 		b.setLayoutY(y);
+	}
+	
+	private void updateHighscores(String name, int score) {
+		File highscorefile = new File("src/Scene/highscores.txt"); 
+		ArrayList<String> listToSaveAsTxt = new ArrayList<>();
+		
+		boolean startComparison = false; 
+		
+		String test = name + " - " + GameProgram.getScore();
+		try {
+			Scanner sc = new Scanner(highscorefile);
+			while(sc.hasNextLine()) {
+				String aline = sc.nextLine();
+				if (GameProgram.getDiff().equals("easy")&&aline.equals("Easy Map")) {
+					startComparison = true; 
+				}
+				else if (GameProgram.getDiff().equals("hard")&& aline.equals("Hard Map")) {
+					startComparison = true; 
+				}
+				else if (aline.equals("Hard Map") && GameProgram.getDiff().equals("easy")) {
+					startComparison = false; 
+				}
+				if (startComparison && aline.indexOf('-') != -1) {
+					int linescore = Integer.valueOf(aline.substring(aline.indexOf('-')+2,aline.length())); 
+					if (Integer.valueOf(test.substring(test.indexOf('-')+2,test.length())) > linescore) {
+						System.out.println("SHOULD ADD THIS");
+						listToSaveAsTxt.add(test);
+						test = aline;
+					}
+					else {
+						listToSaveAsTxt.add(aline);
+					}
+				}
+				else {
+					listToSaveAsTxt.add(aline); 
+				}
+				
+			}
+	        try {
+	            FileWriter writer = new FileWriter("src/Scene/highscores.txt");
+	            writer.write("");
+	            for (String s : listToSaveAsTxt) {
+	            	writer.write(s+System.lineSeparator()); 
+	            }
+	            writer.flush();
+	            writer.close();
+	        } catch (IOException e) {
+	            System.out.println("An error occurred while clearing and writing the file: " + e.getMessage());
+	        }
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
