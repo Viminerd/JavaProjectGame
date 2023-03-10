@@ -33,6 +33,7 @@ public class GameProgram {
 	private double spawnScale = 1;
 	public static long invincibleTime = 0;
 	public static long shootPowerUp = 0;
+	private double powerUpSpawnCounter = 0;
 
 	Text currentScore = new Text(score + "");
 
@@ -75,21 +76,21 @@ public class GameProgram {
 					score++;
 					secondCounter = 0;
 					botSpawnCounter += 1;
+					powerUpSpawnCounter += 0.7;
 				}
 
 				secondCounter += 16;
-				player.getHitBox().setStroke(Color.BLACK); 
+				player.getHitBox().setStroke(Color.BLACK);
 				if (invincibleTime != 0) {
-					player.getHitBox().setStroke(Color.GOLD); 
+					player.getHitBox().setStroke(Color.GOLD);
 					invincibleTime -= 1;
 				}
 				if (shootPowerUp != 0) {
-					player.getHitBox().setStroke(Color.BLUE); 
-					player.shootPowerUp = true; 
+					player.getHitBox().setStroke(Color.BLUE);
+					player.shootPowerUp = true;
 					shootPowerUp -= 1;
-				}
-				else {
-					player.shootPowerUp = false; 
+				} else {
+					player.shootPowerUp = false;
 				}
 
 			} else {
@@ -97,14 +98,15 @@ public class GameProgram {
 			}
 			currentScore.setText(score + "");
 			spawnRanged();
+			spawnPowerup();
 
 		}));
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
 //		new Ranged(500, 300, player);
 //		new Melee(600, 200, player);
-		new InvinciblePowerUp(300, 200, player); // TEMP
-		new ShootPowerUp(300,300,player); 
+//		new InvinciblePowerUp(300, 200, player); // TEMP
+//		new ShootPowerUp(300, 300, player);
 		// SCORE
 		Rectangle scoreHolder = new Rectangle(40, 0, 50, 20);
 		scoreHolder.setFill(Color.GREY);
@@ -131,7 +133,9 @@ public class GameProgram {
 
 	private void spawnRanged() {
 		if (botSpawnCounter > 9 * spawnScale) {
-			spawnScale = spawnScale - 0.1;
+			if (spawnScale > 0.1) {
+				spawnScale = spawnScale - 0.05;
+			}
 			Random random = new Random();
 			int sizeX = random.nextInt((int) ProjectMain.mainlayout.getWidth());
 			int sizeY = random.nextInt((int) ProjectMain.mainlayout.getHeight());
@@ -140,11 +144,26 @@ public class GameProgram {
 			for (Entity e : entityList) {
 				if (r.getHitBox().getBoundsInParent().intersects(e.getBoundsInParent())) {
 					r.removeEntity();
-					spawnRanged(); 
+					spawnRanged();
 				}
 			}
 			spawnMelee();
-			
+
+		}
+
+	}
+
+	private void spawnPowerup() {
+		if (powerUpSpawnCounter > 7) {
+			Random random = new Random();
+			int sizeX = random.nextInt((int) ProjectMain.mainlayout.getWidth());
+			int sizeY = random.nextInt((int) ProjectMain.mainlayout.getHeight());
+			if (random.nextInt() % 2 == 0) {
+				new InvinciblePowerUp(sizeX, sizeY, player);
+			} else {
+				new ShootPowerUp(sizeX, sizeY, player);
+			}
+			powerUpSpawnCounter = 0;
 		}
 
 	}
