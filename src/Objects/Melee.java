@@ -11,7 +11,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 
 /**
- * 
+ * Class defining Melee enemy behavior. input posx posy health Player
  *
  */
 public class Melee extends Enemy {

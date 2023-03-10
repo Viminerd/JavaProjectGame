@@ -1,5 +1,5 @@
 /**
- * 
+ *  Class defining lava. insert posx posy 
  */
 package Objects;
 

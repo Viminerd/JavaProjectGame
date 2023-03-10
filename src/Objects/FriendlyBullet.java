@@ -7,7 +7,7 @@ import GamePackage.GameProgram;
 
 /**
  * @author osclo923
- *
+ * Class defining behavior for a bullet fired by player.
  */
 public class FriendlyBullet extends Bullet{
 

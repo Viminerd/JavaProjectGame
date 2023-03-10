@@ -32,7 +32,7 @@ import javafx.scene.text.Text;
 
 /**
  * @author Viktor
- *
+ * Main meny class. Defines behavior of main meny screen. 
  */
 public class MainMenu extends Canvas {
 

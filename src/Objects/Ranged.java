@@ -23,7 +23,7 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Transform;
 
 /**
- * 
+ * Class defining Ranged enemy behavior. input posx posy health Player
  *
  */
 public class Ranged extends Enemy {

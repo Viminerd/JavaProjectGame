@@ -1,3 +1,7 @@
+/*
+ * Class for playable player character. Input: posx posy health. 
+ */
+
 package Objects;
 
 import java.awt.geom.RectangularShape;

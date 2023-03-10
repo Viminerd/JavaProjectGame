@@ -1,6 +1,4 @@
-/**
- * Sublclass to Powerup that implements the shoot powerup. input posx posy Player
- */
+
 package Objects;
 
 import GamePackage.GameProgram;
@@ -9,7 +7,7 @@ import javafx.scene.shape.Ellipse;
 
 /**
  * @author osclo923
- *
+ * Sublclass to Powerup that implements the shoot powerup. input posx posy Player
  */
 public class ShootPowerUp extends Powerup {
 

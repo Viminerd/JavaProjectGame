@@ -1,3 +1,6 @@
+/**
+ * Gameplaymechanics
+ */
 package GamePackage;
 
 import java.util.ArrayList;

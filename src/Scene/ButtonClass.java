@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package Scene;
 
 import javafx.scene.canvas.Canvas;

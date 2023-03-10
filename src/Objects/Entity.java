@@ -14,7 +14,7 @@ import javafx.scene.shape.Shape;
 
 /**
  * @author osclo923
- *
+ * main class for all entitys that should be visible on screen 
  */
 public abstract class Entity extends Canvas {
 	
@@ -37,7 +37,7 @@ public abstract class Entity extends Canvas {
 	}
 
 	public void move() {
-
+		//not abstract because i did not want to need to implement it for all classes
 	}
 
 	public double getPosx() {

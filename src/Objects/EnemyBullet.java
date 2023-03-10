@@ -13,7 +13,7 @@ import javafx.scene.shape.Shape;
 
 /**
  * @author osclo923
- *
+ * Class defining behavior for a bullet not fired by player.
  */
 public class EnemyBullet extends Bullet{
 

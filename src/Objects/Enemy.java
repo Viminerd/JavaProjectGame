@@ -6,7 +6,7 @@ package Objects;
 import javafx.geometry.Point2D;
 
 /**
- *
+ * Main class for enemy, set posx posy and health
  */
 public abstract class Enemy extends Character {
 

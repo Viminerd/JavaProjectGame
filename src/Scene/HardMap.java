@@ -8,7 +8,7 @@ import Objects.Pillar;
 import Objects.Ranged;
 
 /**
- *
+ * Map with lavapools and not alot of protection against bullets and restrictions for bot movement
  */
 public class HardMap extends GameScene{
 

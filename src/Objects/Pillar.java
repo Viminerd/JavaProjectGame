@@ -1,5 +1,5 @@
 /**
- * 
+ * Class defining pillar. insert posx posy 
  */
 package Objects;
 
