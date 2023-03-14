@@ -199,6 +199,10 @@ public class MainMenu extends Canvas {
 						enternametext.setText(name);
 					
 					}
+					else if (ee.getCode() == KeyCode.ENTER) {
+						updateHighscores(name, GameProgram.getScore()); 
+						mainMenu(); 
+					}
 					else {						
 						name = name + ee.getText();
 						enternametext.setText(name);
