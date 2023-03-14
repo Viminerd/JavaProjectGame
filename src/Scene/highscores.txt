@@ -1,12 +1,12 @@
 Easy Map
+V - 280
 Test - 22
 null - 0
 null - 0
 null - 0
-null - 0
 Hard Map
+Viktor - 576
+Viktor - 373
 TEST OSCAR - 261
 Test - 18
-null - 0
-null - 0
 null - 0
