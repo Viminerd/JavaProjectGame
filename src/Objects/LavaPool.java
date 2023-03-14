@@ -26,7 +26,7 @@ public class LavaPool extends Entity {
 		super(posx, posy);
 		this.radie = radie; 		
 		
-		hitBox = new Rectangle(posx, posx+30, posy, posy+30);
+		hitBox = new Rectangle(posx, posy, 150, 240);
 		hitBox.setFill(Color.ORANGE);
 		hitBox.setStroke(Color.RED);
 		addEntity();

@@ -26,7 +26,7 @@ public class HardMap extends GameScene{
 			objectList.add(new Pillar(x+200*i, y+200, r)); 
 		}
 
-		objectList.add(new LavaPool(x+150,y+100,r*2)); 
+		objectList.add(new LavaPool(x+160,y+40,r*2)); 
 
 	}
 	
