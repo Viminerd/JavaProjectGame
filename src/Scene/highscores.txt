@@ -10,3 +10,9 @@ Viktor - 848
 Vikt - 830
 Vic - 732
 Viktor - 661
+<<<<<<< HEAD
+=======
+Viktor - 576
+Viktor - 373
+Oscar - 325
+>>>>>>> f2091afbded08701d3f3f3615a5a2e5312d65d5d
