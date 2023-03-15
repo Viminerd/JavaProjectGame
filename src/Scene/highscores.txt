@@ -5,8 +5,8 @@ null - 0
 null - 0
 null - 0
 Hard Map
+Viktor - 855
+Viktor - 848
+Vikt - 830
 Vic - 732
 Viktor - 661
-Viktor - 576
-Viktor - 373
-first try - 287
