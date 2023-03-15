@@ -5,8 +5,8 @@ null - 0
 null - 0
 null - 0
 Hard Map
+Vic - 732
+Viktor - 661
 Viktor - 576
 Viktor - 373
-TEST OSCAR - 261
-Test - 18
-kk - 5
+first try - 287
