@@ -25,22 +25,6 @@ public class ProjectMain extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	/*
-	 * TODO LIST 
-	 * Player kan gå in i lava
-	 * Enemies kan inte spawna på eller i närheten av spelare
-	 * Enemies kan inte gå in i spelare, det får spelaren att sitta fast. 
-	 * enemies kan inte gå in i pelare eller hinder //klart för meele
-	 * Läs in highscore från filen och spara om filen med nya värden. /// LÄS IN KLAR, structurera upp sparandet av filen rätt. 
-	 * Enter name vid game over
-	 * Gör spelet skalbart, kanske göra om alla positioner för menu och hinder osv som ett bråktal av ProjectMain.mainlayout.getWidth()
-	 * Powerups... 
-	 * ev massa visuellt fix, menyn och spelet kan ju bli lite roligare
-	 * Fixa melee fiende DONE
-	 * Implemetera powerups // Påbörjat, hitbox intersect problem
-	 * Spawna powerups
-	 * Skala om så EasyMap har rätt skala
-	 */
 
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Projekt TDDE10");
